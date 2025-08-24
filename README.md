@@ -28,3 +28,6 @@ El "Regalador": Busca un regalo original, de calidad y con identidad cultural pa
 - Comunidad y Cultura: No solo vendemos productos, compartimos la historia y la pasión detrás del mate a través de nuestro blog y redes sociales.
 - Suscripción Exclusiva: ofrecemos una caja mensual con "La Yerba del Mes" para descubrir sabores únicos y apoyar a productores locales.
 - Experiencia de Usuario: Una plataforma limpia, segura y fácil de usar desde cualquier dispositivo.
+
+## IEEE830
+Link del IEEE830: https://docs.google.com/document/d/18mxs_G_R2EQWllAvJqpyUc8nmDZWfDuqXhMY6I2GZLU/edit?tab=t.0
