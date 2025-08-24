@@ -29,5 +29,6 @@ El "Regalador": Busca un regalo original, de calidad y con identidad cultural pa
 - Suscripción Exclusiva: ofrecemos una caja mensual con "La Yerba del Mes" para descubrir sabores únicos y apoyar a productores locales.
 - Experiencia de Usuario: Una plataforma limpia, segura y fácil de usar desde cualquier dispositivo.
 
-## IEEE830
+
+## 📜IEEE830
 Link del IEEE830: https://docs.google.com/document/d/18mxs_G_R2EQWllAvJqpyUc8nmDZWfDuqXhMY6I2GZLU/edit?tab=t.0
