@@ -1,8 +1,7 @@
-from sistema import Sistema
+a
 
 def main():
-    sistema = Sistema()
-    sistema.mostrar_menu()
+    menu_principal()
 
 if __name__ == "__main__":
     main()
