@@ -32,3 +32,21 @@ El "Regalador": Busca un regalo original, de calidad y con identidad cultural pa
 
 ## 📜IEEE830
 Link del IEEE830: https://docs.google.com/document/d/18mxs_G_R2EQWllAvJqpyUc8nmDZWfDuqXhMY6I2GZLU/edit?tab=t.0
+
+
+## ⚙️ Instalación del Proyecto
+
+Este proyecto está desarrollado en Python y utiliza MySQL como base de datos. A continuación se detallan los pasos para instalarlo en modo desarrollador.
+
+### 🔧 Requisitos
+
+- Python 3.10 o superior
+- MySQL Server (ej. XAMPP o MySQL Workbench)
+- Git
+
+### 📦 Dependencias
+
+Instalación de paquetes necesarios:
+
+```bash
+pip install mysql-connector-python python-dotenv
