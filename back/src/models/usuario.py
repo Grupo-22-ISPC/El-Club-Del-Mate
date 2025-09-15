@@ -6,11 +6,19 @@ import re
 
 class Usuario():
 
-    def __init__(self,nombre,email,rol,contrasena):
+    ROLES = {
+        1: "admin",
+        2: "usuario",
+        3: "vendedor"
+    }
+
+
+    def __init__(self,id_usuario,nombre,email,contrasena,rol_id):
+        self.__id = id_usuario
         self._nombre = nombre
         self._email = email
-        self._rol = rol
         self._contrasena = contrasena
+        self._rol = rol_id
 
     
     @property
@@ -32,7 +40,12 @@ class Usuario():
     @property
     def rol(self):
         return self._rol
-    
+
+    @property
+    def nombre_rol(self):
+        return self.ROLES.get(self._rol, "Rol desconocido")
+
+
     @rol.setter
     def rol(self,nuevo_rol:int):
         if nuevo_rol not in (1,2,3):
@@ -56,13 +69,13 @@ class Usuario():
             raise ValueError("Debe contener al menos un número")
         if not re.search(r"[!@#$%^&*(),.?\":{}|<>]",nueva_contrasena):
             raise ValueError("Debe contener al menos un carácter especial")
-        print('paso')
+        
         self._contrasena = hashlib.sha256(nueva_contrasena.encode()).hexdigest()
 
     def __str__(self):
         # Muestra el objeto como texto
-        return f"Usuario({self.email},{self.nombre})"
+        return f"Usuario({self.email},{self.nombre},{self.rol})"
     
-    ######################################################################################################
+   
 
  
