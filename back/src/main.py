@@ -1,4 +1,7 @@
-a
+from core.sistema import menu_principal
+
+
+
 
 def main():
     menu_principal()
