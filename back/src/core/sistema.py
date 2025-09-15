@@ -1,6 +1,6 @@
 
-from src.utils.validation import validar_contrasena, validar_email, validar_nombre
-from src.db.usuario_dao import crear_usuario, listar_usuarios, obtener_usuario_por_email
+from src.utils.validation import hash_contrasena, validar_contrasena, validar_email, validar_nombre, verificar_contrasena
+from src.db.usuario_dao import crear_usuario, eliminar_usuario_por_nombre, modificar_rol_usuario, mostrar_usuarios, obtener_usuario_por_email
 from src.models.usuario import Usuario
 
 
@@ -9,67 +9,62 @@ def registrar_usuario():
     print("\n--- Registro de Usuario ---")
 
     nombre = input("Nombre: ").strip()
-
     if not validar_nombre(nombre):
         print("❌ El nombre debe tener al menos 3 letras.")
         return
     
     email = input("Email: ").strip()
-
     if not validar_email(email):
         print("❌ Email inválido.")
         return
     
     contrasena = input("Contraseña: ").strip()
-
     if not validar_contrasena(contrasena):
-        print("❌ Contraseña débil.")
+        print("❌ Contraseña débil.")        
         return
     
     rol_id = 2
-    usuario = Usuario(nombre=nombre, email=email, contrasena=contrasena, rol=rol_id)
+    hash_contrasena(contrasena)
+    usuario = Usuario(id,nombre=nombre, email=email, contrasena=contrasena, rol_id=rol_id)
     crear_usuario(usuario)
     print("✅ Usuario creado con éxito.")
 
 
 def iniciar_sesion():
-    print("\n--- 🔐Inicio de Sesión ---")
+    print("\n--- 🔐 Inicio de Sesión ---")
     email = input("Email: ")
     contrasena = input("Contraseña: ")
     usuario = obtener_usuario_por_email(email)
-    if usuario and usuario.contrasena == contrasena:
-        print(f"✅ Bienvenido {usuario.nombre} (Rol ID: {usuario.rol_id})")
+    if usuario and verificar_contrasena(contrasena, usuario.contrasena):
+        print(f"✅ Bienvenido {usuario.nombre} (Rol ID: {usuario.nombre_rol})")
         return usuario
     else:
         print("❌ Usuario o contraseña incorrectos")
         return None
 
 
-def menu_admin():
-    print("\n --- Menú Administrador ('usuario_actual.nombre_usuario') ---")
-    print("1. Listar usuarios")
-    print("2. Cambiar rol de usuario")
-    print("3. Eliminar usuario")
-    print("4. Cerrar sesión")
-    opcion = input("Seleccione una opción: ")
+def menu_admin(usuario_actual):
+    while True:
+        print(f"\n🔐 Menú Administrador - Bienvenido {usuario_actual._nombre}")
+        print("1️⃣ Listar usuarios")
+        print("2️⃣ Cambiar rol de un usuario")
+        print("3️⃣ Eliminar usuario")
+        print("4️⃣ Cerrar sesión")
 
-    if opcion == "1":
-        listar_usuarios()
-    # elif opcion == "2":
-    #     nombre = input("Ingrese el nombre del usuario a modificar: ")
-    #     nuevo_rol = input("Ingrese el nuevo rol (administrador/usuario): ").lower()
-    #     if nuevo_rol not in ["administrador", "usuario"]:
-    #         print("Rol inválido.")
-    #     else:
-    #         cambiar_rol(nombre, nuevo_rol)
-    # elif opcion == "3":
-    #     nombre = input("Ingrese el nombre del usuario a eliminar: ")
-    #     eliminar_usuario(nombre)
-    # elif opcion == "4":
-    #     print("Cerrando sesión...")
-    #     usuario_actual = None
-    # else:
-    #     print("Opción inválida.")
+        opcion = input("Seleccione una opción: ").strip()
+
+        match opcion:
+            case "1":
+                mostrar_usuarios()
+            case "2":
+                modificar_rol_usuario()
+            case "3":
+                eliminar_usuario_por_nombre()
+            case "4":
+                print("👋 Cerrando sesión...")
+                break
+            case _:
+                print("❌ Opción inválida. Intente nuevamente.")
 
 
 def menu_principal():
@@ -89,7 +84,7 @@ def menu_principal():
             usuario = iniciar_sesion()
             if usuario:
                 if usuario.rol == 1:
-                    menu_admin()
+                    menu_admin(usuario)
                 else:
                     print("🔒 Acceso restringido: solo administradores.")
         elif opcion == "3":
