@@ -54,7 +54,7 @@ def menu_usuario(usuario_actual):
 
         match opcion:
             case "1":
-                print(usuario_actual)
+                print(f"Nombre: {usuario_actual.nombre}, Email: {usuario_actual.email}, Rol: {usuario_actual.rol}")
             case "2":
                 editar_nombre(usuario_actual)
             case "3":                
@@ -110,6 +110,8 @@ def menu_principal():
             if usuario:
                 if usuario.rol == 1:
                     menu_admin(usuario)
+                elif usuario.rol == 2:
+                    menu_usuario(usuario)
                 else:
                     print("🔒 Acceso restringido: solo administradores.")
         elif opcion == "3":
