@@ -9,7 +9,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #E9E4D4;
+      background: beige;
       border-radius: 20px;
       padding: 30px;
       margin: 50px auto;
@@ -39,4 +39,6 @@
       line-height: 1.5;
     }
 
- 
+ .contactForm{
+  background: #fff;
+ }
