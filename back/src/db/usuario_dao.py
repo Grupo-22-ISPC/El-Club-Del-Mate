@@ -84,3 +84,24 @@ def eliminar_usuario_por_nombre():
 
     
     print(f"🗑️ Usuario {nombre} eliminado.")
+
+
+# def mostrar_Informacion():
+#     conn = get_connection()
+#     cursor = conn.cursor(dictionary=True)
+#     query = "SELECT * FROM usuario WHERE email = %s"
+#     cursor.execute(query, (email,))
+#     row = cursor.fetchone()
+#     conn.close()
+#     if row:        
+#         return Usuario(**row)
+#     return None
+
+def editar_nombre(usuario):
+    nombre_nuevo = input("Ingrese el nuevo nombre: ").strip()
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE usuario SET nombre= %s WHERE nombre = %s", (nombre_nuevo, usuario.id))
+    conn.commit()
+    conn.close()
+    print(f"✅ Nombre {usuario.nombre} actualizado a {nombre_nuevo}.")
