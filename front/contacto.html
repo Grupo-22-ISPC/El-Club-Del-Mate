@@ -50,9 +50,59 @@
   </div>
 </nav>
 
-<div id="contactForm" class="contact-form">
-    acá debería de ir el formulario de contacto
+
+<div class="container d-flex justify-content-center align-items-center min-vh-50 contactForm">
+  <div class="col-md-6">
+    <!-- Título y texto centrados -->
+    <div class="text-center mb-4">
+      <h2>¡Contáctanos!</h2>
+      <p class="text-muted">
+        Nos encantaría saber de ti. <br>
+        Completa el formulario y te responderemos lo antes posible.<br>
+        Tu opinión y consultas son muy importantes para nosotros. 😊
+      </p>
+    </div>
+
+    <!-- Formulario -->
+    <form class="row g-3 shadow p-4 rounded bg-light">
+      
+      <!-- Nombre y Apellido en la misma fila -->
+      <div class="col-md-6">
+        <label for="inputNombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" placeholder="Tu nombre">
+      </div>
+      <div class="col-md-6">
+        <label for="inputApellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="inputApellido" placeholder="Tu apellido">
+      </div>
+
+      <!-- Email -->
+      <div class="col-12">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="ejemplo@correo.com">
+      </div>
+
+      <!-- Asunto -->
+      <div class="col-12">
+        <label for="inputAsunto" class="form-label">Asunto</label>
+        <input type="text" class="form-control" id="inputAsunto" placeholder="Escribe el asunto">
+      </div>
+
+      <!-- Mensaje -->
+      <div class="col-12">
+        <label for="inputMensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="inputMensaje" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+      </div>
+
+      <!-- Botón -->
+      <div class="col-12">
+        <button type="submit" class="btn btn-success w-100">Enviar</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </body>
