@@ -67,4 +67,4 @@ INSERT INTO ROL (nombre) VALUES
 ('vendedor');
 -- Insertar usuario admin con contraseña hasheada (SHA-256 de 'P@ssw0rd')
 INSERT INTO USUARIO (nombre, email, contrasena, rol_id) VALUES 
-('admin', 'admin@clubdelmate.com', 'SHA2('P@ssw0rd', 256)', 1);
+('admin', 'admin@clubdelmate.com', SHA2('P@ssw0rd', 256), 1);

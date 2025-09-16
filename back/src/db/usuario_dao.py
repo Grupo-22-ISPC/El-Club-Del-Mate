@@ -43,7 +43,7 @@ def mostrar_usuarios():
 
 
 def modificar_rol_usuario():
-    nombre = input("Ingrese el nombre del usuario a modificar: ").strip()
+    email = input("Ingrese el email del usuario a modificar: ").strip()
     nuevo_rol = input("Ingrese el nuevo rol (admin/usuario/vendedor): ").lower()
 
     ROLES_INVERSO = {"admin": 1, "usuario": 2, "vendedor": 3}
@@ -52,23 +52,23 @@ def modificar_rol_usuario():
     if not rol_id:
         print("❌ Rol inválido.")
         return
-    if isSuperAdmin:
+    if isSuperAdmin(email):
         print("🚫 No se puede modificar al usuario raíz.")
         return
 
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("UPDATE usuario SET rol_id = %s WHERE nombre = %s", (rol_id, nombre))
+    cursor.execute("UPDATE usuario SET rol_id = %s WHERE email = %s", (rol_id, email))
     conn.commit()
     conn.close()
-    print(f"✅ Rol de {nombre} actualizado a {nuevo_rol}.")
+    print(f"✅ Rol de {email} actualizado a {nuevo_rol}.")
 
 
-def eliminar_usuario_por_nombre():
-    nombre = input("Ingrese el nombre del usuario a eliminar: ").strip()
-    confirmacion = input(f"¿Está seguro que desea eliminar a {nombre}? (s/n): ").lower()
+def eliminar_usuario_por_email():
+    email = input("Ingrese el email del usuario a eliminar: ").strip()
+    confirmacion = input(f"¿Está seguro que desea eliminar a {email}? (s/n): ").lower()
 
-    if isSuperAdmin(nombre):
+    if isSuperAdmin(email):
         print("🚫 No se puede eliminar al usuario raíz.")
         return
     
@@ -78,12 +78,12 @@ def eliminar_usuario_por_nombre():
 
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM usuario WHERE nombre = %s", (nombre,))    
+    cursor.execute("DELETE FROM usuario WHERE email = %s", (email,))    
     conn.commit()
     conn.close()
 
     
-    print(f"🗑️ Usuario {nombre} eliminado.")
+    print(f"🗑️ Usuario {email} eliminado.")
 
 
 
