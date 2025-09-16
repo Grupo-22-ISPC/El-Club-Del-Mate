@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Producto</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-success p-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">El Club del Mate</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Historia y Cultura</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tienda Online
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./mate.html">Mates</a></li>
+            <li><a class="dropdown-item" href="./bombilla_mate.html">Bombillas</a></li>
+            <li><a class="dropdown-item" href="./yerbas.html">Yerbas</a></li>
+            <li><a class="dropdown-item" href="./agregados.html">Agregados al Mate</a></li>
+            <li><a class="dropdown-item" href="./kits_completos_para_principiantes.html">Kits completos para principiantes</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./tienda.html">Todos los productos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Academia & Tutoriales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./contacto.html">Contacto</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
+        <button class="btn btn-outline-success-bg-secondary p-3" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container my-5 product-container">
+  <div class="row g-4">
+    <!-- Galería de imágenes -->
+    <div class="col-md-6">
+      <!-- Contenedor fijo para la imagen principal -->
+      <div class="product-img-wrapper mb-3">
+        <img id="imagen-principal" 
+             src="./img/mate/mate7.jpeg" 
+             alt="Mate de Madera" 
+             class="product-img">
+      </div>
+      <hr>
+      <!-- Miniaturas -->
+      <div class="d-flex gap-2 product-img-miniature">
+        <img src="./img/mate/mate7.jpeg" alt="Mate vista 1" class="img-thumbnail miniatura">
+        <img src="./img/mate/mate1.jpeg" alt="Mate vista 2" class="img-thumbnail miniatura">
+        <img src="./img/mate/mate5.jpeg" alt="Mate vista 3" class="img-thumbnail miniatura">
+      </div>
+    </div>
+
+    <!-- Detalles del producto -->
+    <div class="col-md-6">
+      <h1 class="h2">Mate de Madera con Virola de Acero</h1>
+      <p class="h4 text-success fw-bold">$15.000 ARS</p>
+      <p>
+        Este mate de madera está hecho a mano con materiales de alta calidad. 
+        Su virola de acero inoxidable garantiza durabilidad y resistencia. 
+        Perfecto para disfrutar de tus mates en cualquier momento. Incluye bombilla de regalo.
+      </p>
+
+      <div class="mb-3">
+        <label for="color" class="form-label fw-bold">Color:</label>
+        <select id="color" name="color" class="form-select w-auto">
+          <option value="madera-clara">Madera Clara</option>
+          <option value="madera-oscura">Madera Oscura</option>
+          <option value="madera-natural">Madera Natural</option>
+        </select>
+      </div>
+
+      <div class="d-flex gap-3">
+        <button class="btn btn-success btn-lg">Añadir al Carrito</button>
+        <button class="btn btn-success btn-lg">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  const imagenPrincipal = document.getElementById("imagen-principal");
+  const miniaturas = document.querySelectorAll(".miniatura");
+
+  miniaturas.forEach(img => {
+    img.addEventListener("click", () => {
+      imagenPrincipal.src = img.src;
+      imagenPrincipal.alt = img.alt;
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</body>
+</html>
