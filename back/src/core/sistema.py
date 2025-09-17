@@ -1,6 +1,6 @@
 
 from src.utils.validation import hash_contrasena, validar_contrasena, validar_email, validar_nombre, verificar_contrasena
-from src.db.usuario_dao import crear_usuario, editar_nombre, eliminar_usuario_por_nombre, modificar_rol_usuario, mostrar_usuarios, obtener_usuario_por_email
+from src.db.usuario_dao import crear_usuario, editar_nombre, eliminar_usuario_por_email, modificar_rol_usuario, mostrar_usuarios, obtener_usuario_por_email
 from src.models.usuario import Usuario
 
 
@@ -84,7 +84,7 @@ def menu_admin(usuario_actual):
             case "2":
                 modificar_rol_usuario()
             case "3":
-                eliminar_usuario_por_nombre()
+                eliminar_usuario_por_email()
             case "4":
                 print("👋 Cerrando sesión...")
                 break

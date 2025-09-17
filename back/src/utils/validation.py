@@ -1,5 +1,6 @@
 import hashlib
 import re
+import string
 
 from src.db.connection import get_connection
 
@@ -15,13 +16,13 @@ def validar_contrasena(contrasena: str) -> bool:
         re.search(r"[A-Z]", contrasena) and
         re.search(r"[a-z]", contrasena) and
         re.search(r"[0-9]", contrasena) and
-        re.search(r"[!@#$%^&*(),.?\":{}|<>]", contrasena)
+        any(caracter in string.punctuation for caracter in contrasena)
     )
 
-def isSuperAdmin(nombre: str) -> bool:
+def isSuperAdmin(email: str) -> bool:
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT id_usuario FROM usuario WHERE nombre = %s", (nombre,))
+    cursor.execute("SELECT id_usuario FROM usuario WHERE email = %s", (email,))
     usuario = cursor.fetchone()
     conn.close()
 
