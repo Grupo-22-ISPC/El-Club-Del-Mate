@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yerbas Mate</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-success p-3">
+<nav class="navbar navbar-expand-lg bg-success navbar-dark p-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">El Club del Mate</a>
+    <a class="navbar-brand" href="./index.html">El Club del Mate</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Historia y Cultura</a>
+          <a class="nav-link" aria-current="page" href="./index.html">Inicio</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Tienda Online
           </a>
           <ul class="dropdown-menu">
@@ -36,124 +33,257 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Academia & Tutoriales</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="./contacto.html">Contacto</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
-        <button class="btn btn-outline-success-bg-secondary p-3" type="submit">Buscar</button>
+        <button class="btn btn-outline-success-bg-secondary p-3 text-white" type="button">Buscar</button>
       </form>
     </div>
   </div>
 </nav>
 
 <br>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba1.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Larga Vida Orgánica</h5>
-        <p class="card-text">Yerba mate orgánica certificada, sin agroquímicos. Ideal para quienes buscan un sabor natural y saludable.</p>
-        <p> <strong>$3.800 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+<div class="row row-cols-1 row-cols-md-3 g-4 align-items-stretch container-cards">
+  <!-- Card 1 -->
+  <div class="col">
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba1.jpeg" class="card-img-top" alt="Yerba Larga Vida Orgánica">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Larga Vida Orgánica (500gr)</h5>
+          <p class="card-text">
+            Yerba mate orgánica certificada, sin agroquímicos. Ideal para quienes buscan un sabor natural y saludable.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$3.800</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 2 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Rosamonte</h5>
-        <p class="card-text">Yerba tradicional argentina con estacionamiento natural. Sabor fuerte y duradero.</p>
-        <p> <strong>$4.200 (1kg)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba2.jpeg" class="card-img-top" alt="Yerba Rosamonte">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Rosamonte (1kg)</h5>
+          <p class="card-text">
+            Yerba tradicional argentina con estacionamiento natural. Sabor fuerte y duradero.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$4.200</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 3 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba3.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Matenki Digestiva</h5>
-        <p class="card-text">Yerba mate orgánica con hierbas digestivas y relajantes. Perfecta para quienes buscan un mate suave.</p>
-        <p> <strong>$4.500 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba3.jpeg" class="card-img-top" alt="Yerba Matenki Digestiva">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Matenki Digestiva (500gr)</h5>
+          <p class="card-text">
+            Yerba mate orgánica con hierbas digestivas y relajantes. Perfecta para quienes buscan un mate suave.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$4.500</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 4 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba4.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Atiguá Orgánica</h5>
-        <p class="card-text">Yerba orgánica con certificaciones internacionales. Sabor suave, cultivada de manera sostenible.</p>
-        <p> <strong>$4.000 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba4.jpeg" class="card-img-top" alt="Yerba Atiguá Orgánica">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Atiguá Orgánica (500gr)</h5>
+          <p class="card-text">
+            Yerba orgánica con certificaciones internacionales. Sabor suave, cultivada de manera sostenible.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$4.000</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 5 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba5.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Ajedrez a Granel</h5>
-        <p class="card-text">Yerba mate clásica en presentación de gran volumen, utilizada en mayoristas y consumo familiar.</p>
-        <p> <strong>$20.000 (bolsa 10kg)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba5.jpeg" class="card-img-top" alt="Yerba Ajedrez a Granel">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Ajedrez a Granel (bolsa 10kg)</h5>
+          <p class="card-text">
+            Yerba mate clásica en presentación de gran volumen, utilizada en mayoristas y consumo familiar.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$20.000</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 6 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba6.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Eco Orgánico con Cáñamo</h5>
-        <p class="card-text">Yerba combinada con cáñamo, de cultivo ecológico. Una fusión innovadora para un mate diferente.</p>
-        <p> <strong>$5.500 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba6.jpeg" class="card-img-top" alt="Yerba Eco Orgánico con Cáñamo">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Eco Orgánico con Cáñamo (500gr)</h5>
+          <p class="card-text">
+            Yerba combinada con cáñamo, de cultivo ecológico. Una fusión innovadora para un mate diferente.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$5.500</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 7 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba7.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Antonia Molida</h5>
-        <p class="card-text">Yerba molida sin palo en envase transparente. Sabor fuerte, recomendada para los que buscan intensidad.</p>
-        <p> <strong>$3.500 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba7.jpeg" class="card-img-top" alt="Yerba Antonia Molida">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Antonia Molida (500gr)</h5>
+          <p class="card-text">
+            Yerba molida sin palo en envase transparente. Sabor fuerte, recomendada para los que buscan intensidad.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$3.500</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 8 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba8.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Cósmico Premium</h5>
-        <p class="card-text">Yerba mate artesanal en lata. Presentación premium, pensada para un consumo exclusivo.</p>
-        <p> <strong>$6.000 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba8.jpeg" class="card-img-top" alt="Yerba Cósmico Premium">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Cósmico Premium (500gr)</h5>
+          <p class="card-text">
+            Yerba mate artesanal en lata. Presentación premium, pensada para un consumo exclusivo.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$6.000</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 9 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba9.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Itabó Elaborada</h5>
-        <p class="card-text">Yerba mate elaborada con estacionamiento natural. Sabor equilibrado, tradicional de Misiones.</p>
-        <p> <strong>$3.900 (500g)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba9.jpeg" class="card-img-top" alt="Yerba Itabó Elaborada">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Itabó Elaborada (500gr)</h5>
+          <p class="card-text">
+            Yerba mate elaborada con estacionamiento natural. Sabor equilibrado, tradicional de Misiones.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$3.900</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 10 -->
   <div class="col">
-    <div class="card">
-      <img src="./img/yerba/yerba10.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Yerba Jesper a Granel</h5>
-        <p class="card-text">Yerba mate en presentación de bolsa grande para consumo masivo. Sabor intenso, ideal para bares o familias numerosas.</p>
-        <p> <strong>$22.000 (bolsa 10kg)</strong>.<a class="btn btn-success" href="Compra.html" role="button">Comprar</a></p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba10.jpeg" class="card-img-top" alt="Yerba Jesper a Granel">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Jesper a Granel (bolsa 10kg)</h5>
+          <p class="card-text">
+            Yerba mate en presentación de bolsa grande para consumo masivo. Sabor intenso, ideal para bares o familias numerosas.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$22.000</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+
+  <!-- Footer -->
+  <footer class="bg-success text-white text-center py-3 mt-5">
+    &copy; 2025 El Club del Mate. Todos los derechos reservados.
+  </footer>
+
+  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </body>

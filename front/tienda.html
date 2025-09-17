@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-success p-3">
+<nav class="navbar navbar-expand-lg bg-success navbar-dark p-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">El Club del Mate</a>
+    <a class="navbar-brand" href="./index.html">El Club del Mate</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Historia y Cultura</a>
+          <a class="nav-link" aria-current="page" href="./index.html">Inicio</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Tienda Online
           </a>
           <ul class="dropdown-menu">
@@ -36,50 +33,141 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Academia & Tutoriales</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="./contacto.html">Contacto</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
-        <button class="btn btn-outline-success-bg-secondary p-3" type="submit">Buscar</button>
+        <button class="btn btn-outline-success-bg-secondary p-3 text-white" type="button">Buscar</button>
       </form>
     </div>
   </div>
 </nav>
 
 <br>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4 align-items-stretch container-cards">
+  <!-- Card 1 -->
   <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/agregados/Jengibre.webp" class="card-img-top" alt="Jengibre Deshidratado">
+        <div class="card-body">
+          <h5 class="card-title">Jengibre Deshidratado (100gr)</h5>
+          <p class="card-text">
+            Jengibre molido en trozos pequeños. Brinda un sabor picante y energizante al mate.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$2.500</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 2 -->
   <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/bombilla/bombilla5.jpeg" class="card-img-top" alt="Bombilla con Filtro Cuchara Larga">
+        <div class="card-body">
+          <h5 class="card-title">Bombilla con Filtro Cuchara Larga</h5>
+          <p class="card-text">
+            Bombilla de acero inoxidable, filtro cuchara alargado y desmontable.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$6.500</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Card 3 -->
   <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/kits completos de mate/kits completos de mate9.jpeg" class="card-img-top" alt="Kit Matero Verde Militar Premium">
+        <div class="card-body">
+          <h5 class="card-title">Kit Matero Verde Militar Premium</h5>
+          <p class="card-text">
+            Incluye bolso reforzado estilo mochila, termo de acero, yerbero, mate de madera, bombilla y azucarero.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$36.000</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="col">
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/yerba/yerba10.jpeg" class="card-img-top" alt="Yerba Jesper a Granel">
+        <div class="card-body">
+          <h5 class="card-title">Yerba Jesper a Granel</h5>
+          <p class="card-text">
+            Yerba mate en presentación de bolsa grande para consumo masivo. Sabor intenso, ideal para bares o familias numerosas.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$22.000 (bolsa 10kg)</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="col">
+    <div class="card h-100">
+      <a href="./producto.html" class="text-decoration-none text-dark">
+        <img src="./img/mate/mate10.png" class="card-img-top" alt="Mate de cerámica blanco">
+        <div class="card-body">
+          <h5 class="card-title">Mate de cerámica blanco</h5>
+          <p class="card-text">
+            Mate de cerámica esmaltada de forma redonda.
+          </p>
+        </div>
+      </a>
+      <div class="card-footer d-flex">
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <strong>$12.000</strong>
+        </div>
+        <div class="w-50 d-flex justify-content-center align-items-center">
+          <a class="btn btn-success" href="#" role="button">Comprar</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+  <!-- Footer -->
+  <footer class="bg-success text-white text-center py-3 mt-5">
+    &copy; 2025 El Club del Mate. Todos los derechos reservados.
+  </footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
