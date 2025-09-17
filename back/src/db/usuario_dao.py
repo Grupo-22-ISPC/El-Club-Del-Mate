@@ -4,13 +4,25 @@ from src.models.usuario import Usuario
 
 ROLES = {1: "Admin", 2: "Usuario", 3: "Vendedor"}
 
-def crear_usuario(usuario:Usuario):
-    conn = get_connection()
-    cursor = conn.cursor()
-    query = "INSERT INTO usuario (nombre,email,rol_id,contrasena) VALUES (%s,%s,%s,%s)"
-    cursor.execute(query,(usuario.nombre, usuario.email, usuario.rol, usuario.contrasena))
-    conn.commit()
-    conn.close()
+def crear_usuario(usuario: Usuario) -> bool:
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = """
+            INSERT INTO usuario (nombre, email, rol_id, contrasena) 
+            VALUES (%s, %s, %s, %s)
+        """
+        cursor.execute(query, (usuario.nombre, usuario.email, usuario.rol, usuario.contrasena))
+        conn.commit()
+        return True  # ✅ Si todo salió bien
+
+    except Exception as e:
+        print(f"Error al crear usuario: {e}")
+        return False  # Algo falló
+
+    finally:
+        if conn.is_connected():
+            conn.close()
 
 
 def obtener_usuario_por_email(email: str):
