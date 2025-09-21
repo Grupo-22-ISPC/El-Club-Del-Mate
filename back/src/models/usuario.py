@@ -2,6 +2,8 @@ import hashlib
 import re
 
 
+from src.services.usuario_service import cambiar_rol_usuario, mostrar_usuarios_registrados
+from src.core import menu_cliente, menu_vendedor,menu_admin
 
 
 class Usuario():
@@ -76,6 +78,39 @@ class Usuario():
         # Muestra el objeto como texto
         return f"Usuario({self.email},{self.nombre},{self.rol})"
     
+    def mostrar_menu(self):
+        raise NotImplementedError("Este método debe ser implementado por cada rol.")
+
    
 
- 
+
+
+
+
+class Vendedor(Usuario):
+    def mostrar_menu_cli(self):
+        menu_vendedor(self)
+
+
+class Cliente(Usuario):
+    def mostrar_menu_cli(self):
+        menu_cliente(self)
+    
+       
+
+
+class Admin(Usuario):
+    def mostrar_menu(self):
+        menu_admin.menu_admin_cli(self)
+
+    @staticmethod
+    def listar_usuarios():
+        mostrar_usuarios_registrados()
+    
+    @staticmethod
+    def cambiar_rol():
+       nuevo_rol = cambiar_rol_usuario()
+       print(nuevo_rol)
+    
+    def eliminar_usuario(self):
+        pass

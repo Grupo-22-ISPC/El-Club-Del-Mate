@@ -50,3 +50,14 @@ Instalación de paquetes necesarios:
 
 ```bash
 pip install mysql-connector-python python-dotenv
+```
+### 🔐 Configuración del archivo `.env`
+
+Este proyecto utiliza variables de entorno para manejar credenciales y configuraciones sensibles. Asegurate de crear un archivo `.env` en la raíz del proyecto con el siguiente formato:
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=tu_clave_aqui
+DB_NAME=club_del_mate
+```
