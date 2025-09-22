@@ -111,7 +111,7 @@ class Admin(Usuario):
     @staticmethod
     def cambiar_rol():
        nuevo_rol = cambiar_rol_usuario()
-       print(nuevo_rol)
+       print(nuevo_rol) 
     
     def eliminar_usuario(self):
         pass

@@ -1,15 +1,12 @@
-
-
-
-
-from back.src.utils.validation import isSuperAdmin
-from src.db.connection import get_connection
 import mysql.connector
-from src.models.usuario import Usuario
+
+from src.utils.validation import isSuperAdmin
+from src.db.connection import get_connection
 
 ROLES = {1: "Admin", 2: "Usuario", 3: "Vendedor"}
 
-def crear_usuario(usuario: Usuario) -> bool:
+def crear_usuario(usuario) -> bool:
+    conn = None
     try:
         conn = get_connection()
         if not conn:
@@ -31,6 +28,7 @@ def crear_usuario(usuario: Usuario) -> bool:
 
 
 def obtener_usuario_por_email(email: str):
+    conn = None
     try:
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
@@ -68,11 +66,7 @@ def mostrar_usuarios():
         cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT id_usuario, nombre, email, rol_id FROM usuario")
         lista_usuarios = cursor.fetchall()
-        cursor.fetchall()
-        conn.close()    
-        return lista_usuarios
-
-       
+        return lista_usuarios       
     except mysql.connector.Error as e:
         print(f"Error al mostrar usuarios: {e}")
     finally:
@@ -81,7 +75,7 @@ def mostrar_usuarios():
 
 
 def actualizar_rol(email:str, rol_id:int):
-    
+    conn = None
     try:
         conn = get_connection()
         if not conn:
@@ -97,7 +91,7 @@ def actualizar_rol(email:str, rol_id:int):
             conn.close()
 
 
-def eliminar_usuario_por_email(email:str):
+def eliminar_usuario(email:str):
     email = input("Ingrese el email del usuario a eliminar: ").strip()
 
     if isSuperAdmin(email):
@@ -128,9 +122,6 @@ def eliminar_usuario_por_email(email:str):
             conn.close()
 
     
-   
-
-
 
 def editar_nombre(usuario):
     nombre_nuevo = input("Ingrese el nuevo nombre: ").strip()
