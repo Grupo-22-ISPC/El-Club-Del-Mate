@@ -63,7 +63,7 @@ CREATE TABLE PEDIDO_PRODUCTO (
 -- Insertar roles básicos
 INSERT INTO ROL (nombre) VALUES 
 ('admin'),
-('usuario'),
+('cliente'),
 ('vendedor');
 -- Insertar usuario admin con contraseña hasheada (SHA-256 de 'P@ssw0rd')
 INSERT INTO USUARIO (nombre, email, contrasena, rol_id) VALUES 

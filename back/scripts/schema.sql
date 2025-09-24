@@ -43,4 +43,4 @@ CREATE TABLE IF NOT EXISTS mensajes_contacto (
 );
 
 -- Insertar roles iniciales
-INSERT INTO roles (nombre) VALUES ('Admin'), ('Usuario'), ('Vendedor') ON DUPLICATE KEY UPDATE nombre=nombre;
+INSERT INTO roles (nombre) VALUES ('Admin'), ('cliente'), ('Vendedor') ON DUPLICATE KEY UPDATE nombre=nombre;
