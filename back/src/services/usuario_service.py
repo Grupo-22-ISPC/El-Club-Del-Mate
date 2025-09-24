@@ -1,7 +1,7 @@
 from src.db.usuario_dao import actualizar_rol, eliminar_usuario, mostrar_usuarios
 from src.utils.validation import isSuperAdmin
 
-ROLES_INVERSO = {"admin": 1, "usuario": 2, "vendedor": 3}
+ROLES_INVERSO = {"admin": 1, "cliente": 2, "vendedor": 3}
 
 def cambiar_rol_usuario():
     nombre = input("Ingrese el nombre del usuario a modificar: ").strip()
@@ -29,7 +29,7 @@ def eliminar_usuario_por_email():
     return f"🗑️ Usuario con email_: {email} eliminado."
 
 def mostrar_usuarios_registrados():
-    ROLES = {1: "admin", 2: "usuario", 3: "vendedor"}
+    ROLES = {1: "admin", 2: "cliente", 3: "vendedor"}
 
     usuarios = mostrar_usuarios()
     if not usuarios:

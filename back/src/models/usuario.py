@@ -10,7 +10,7 @@ class Usuario():
 
     ROLES = {
         1: "admin",
-        2: "usuario",
+        2: "cliente",
         3: "vendedor"
     }
 
@@ -89,13 +89,13 @@ class Usuario():
 
 
 class Vendedor(Usuario):
-    def mostrar_menu_cli(self):
-        menu_vendedor(self)
+    def mostrar_menu(self):
+        menu_vendedor.menu_vendedor_cli(self)
 
 
 class Cliente(Usuario):
-    def mostrar_menu_cli(self):
-        menu_cliente(self)
+    def mostrar_menu(self):
+        menu_cliente.menu_cliente_cli(self)
     
        
 

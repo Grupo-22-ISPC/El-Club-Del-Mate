@@ -3,7 +3,7 @@ import mysql.connector
 from src.utils.validation import isSuperAdmin
 from src.db.connection import get_connection
 
-ROLES = {1: "Admin", 2: "Usuario", 3: "Vendedor"}
+ROLES = {1: "Admin", 2: "Cliente", 3: "Vendedor"}
 
 def crear_usuario(usuario) -> bool:
     conn = None
