@@ -92,6 +92,17 @@ class Vendedor(Usuario):
     def mostrar_menu(self):
         menu_vendedor.menu_vendedor_cli(self)
 
+    def listar_producto():
+        pass
+
+    def agregar_producto():
+        pass
+
+    def editar_producto():
+        pass
+    def eliminar_producto():
+        pass
+
 
 class Cliente(Usuario):
     def mostrar_menu(self):
