@@ -1,3 +1,4 @@
+from src.models.rol import Rol
 from src.db.usuario_dao import crear_usuario, obtener_usuario_por_email
 from src.models.usuario import Usuario
 from src.utils.validation import hash_contrasena, validar_contrasena, validar_email, validar_nombre, verificar_contrasena
@@ -22,9 +23,10 @@ def registrar_usuario():
         print("❌ Contraseña débil.")        
         return
     
-    rol_id = 2
     contrasena = hash_contrasena(contrasena)
-    usuario = Usuario(id,nombre=nombre, email=email, contrasena=contrasena, rol_id=rol_id)
+    rol = Rol('cliente')
+
+    usuario = Usuario(id,nombre, email, contrasena, rol)
     crear_usuario(usuario)
     print("✅ Usuario creado con éxito.")
 
@@ -35,7 +37,7 @@ def iniciar_sesion():
     contrasena = input("Contraseña: ")
     usuario = obtener_usuario_por_email(email)
     if usuario and verificar_contrasena(contrasena, usuario.contrasena):
-        print(f"✅ Bienvenido {usuario.nombre} (Rol ID: {usuario.nombre_rol})")
+        print(f"✅ Bienvenido {usuario.nombre} (Rol ID: {usuario.rol.nombre})")
         return usuario
     else:
         print("❌ Usuario o contraseña incorrectos")

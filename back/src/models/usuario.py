@@ -2,25 +2,21 @@ import hashlib
 import re
 import string
 
+from src.models.direccion import Direccion
+from src.models.rol import Rol
 from src.services.usuario_service import cambiar_rol_usuario, mostrar_usuarios_registrados
 from src.core import menu_cliente, menu_vendedor,menu_admin
 
 
 class Usuario():
 
-    ROLES = {
-        1: "admin",
-        2: "cliente",
-        3: "vendedor"
-    }
-
-
-    def __init__(self,id_usuario,nombre,email,contrasena,rol_id):
+    def __init__(self, id_usuario, nombre, email, contrasena, rol:Rol, direcciones:Direccion = None):
         self.__id = id_usuario
         self._nombre = nombre
         self._email = email
         self._contrasena = contrasena
-        self._rol = rol_id
+        self._rol = rol
+        self._direcciones = direcciones if direcciones else []
 
     
     @property
@@ -33,31 +29,31 @@ class Usuario():
             raise ValueError("EL nombre debe tener al menos 2 caracteres")
         self._nombre = nuevo_nombre
 
-
     @property
     def email(self):
         return self._email
-
 
     @property
     def rol(self):
         return self._rol
 
-    @property
-    def nombre_rol(self):
-        return self.ROLES.get(self._rol, "Rol desconocido")
-
-
     @rol.setter
-    def rol(self,nuevo_rol:int):
-        if nuevo_rol not in (1,2,3):
-            raise ValueError("Rol invalido. Debe ser 1(admin), 2(cliente), 3(vendedor)")
-        self._rol = nuevo_rol
-
+    def rol(self,nuevo_rol:Rol):
+      self._rol = nuevo_rol
     
     @property
     def contrasena(self):
         return self._contrasena
+    
+    @property
+    def direcciones(self):
+        return self._direcciones
+    
+    @direcciones.setter
+    def direcciones(self,nueva_direccion):
+        if not all(isinstance(d,Direccion) for d in nueva_direccion):
+            raise TypeError("Todas las direcciones deben ser instancias de la clase Direccion")
+        self._direcciones = nueva_direccion
     
     @contrasena.setter
     def contrasena(self, nueva_contrasena :str):
@@ -82,10 +78,6 @@ class Usuario():
     def mostrar_menu(self):
         raise NotImplementedError("Este método debe ser implementado por cada rol.")
 
-   
-
-
-
 
 
 class Vendedor(Usuario):
@@ -107,7 +99,9 @@ class Vendedor(Usuario):
 class Cliente(Usuario):
     def mostrar_menu(self):
         menu_cliente.menu_cliente_cli(self)
-    
+
+    def modificar_nombre(self):
+        pass    
        
 
 

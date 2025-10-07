@@ -16,7 +16,7 @@ def crear_usuario(usuario) -> bool:
             INSERT INTO usuario (nombre, email, rol_id, contrasena) 
             VALUES (%s, %s, %s, %s)
         """
-        cursor.execute(query, (usuario.nombre, usuario.email, usuario.rol, usuario.contrasena))
+        cursor.execute(query, (usuario.nombre, usuario.email, usuario.rol.id, usuario.contrasena))
         conn.commit()
         return True  # Si todo salió bien
     except mysql.connector.Error as e:
@@ -37,17 +37,30 @@ def obtener_usuario_por_email(email: str):
         row = cursor.fetchone()
         conn.close()
         if row:    
+            from src.models.rol import Rol
             from src.models.usuario import  Admin, Cliente, Usuario, Vendedor  
             rol = row.get("rol_id")  # asumiendo que en la tabla hay una columna 'rol'
+            rol_nombre = {1: "admin", 2: "cliente", 3: "vendedor"}.get(rol, "desconocido")
+            print(row)
+            rol = Rol(rol_nombre)
 
-            if rol == 1:
-                return Admin(**row)
-            elif rol == 2:
-                return Cliente(**row)
-            elif rol == 3:
-                return Vendedor(**row)
+            args = {
+                    "id_usuario": row["id_usuario"],
+                    "nombre": row["nombre"],
+                    "email": row["email"],
+                    "contrasena": row["contrasena"],
+                    "rol": rol
+            }
+
+            if rol_nombre == "admin":
+                return Admin(**args)
+            elif rol_nombre == "vendedor":
+                return Vendedor(**args)
+            elif rol_nombre == "cliente":
+                return Cliente(**args)
             else:
-                return Usuario(**row)  # fallback
+                return Usuario(**args)
+
         return None
     except mysql.connector.Error as e:
         print(f"Error al obtener usuario: {e}")
