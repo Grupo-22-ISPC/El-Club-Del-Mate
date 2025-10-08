@@ -2,22 +2,27 @@ import hashlib
 import re
 import string
 
+from src.services import cliente_service
 from src.models.direccion import Direccion
 from src.models.rol import Rol
-from src.services.usuario_service import cambiar_rol_usuario, mostrar_usuarios_registrados
+from src.services.usuario_service import cambiar_rol_usuario, eliminar_usuario_por_email, mostrar_usuarios_registrados
 from src.core import menu_cliente, menu_vendedor,menu_admin
+
 
 
 class Usuario():
 
     def __init__(self, id_usuario, nombre, email, contrasena, rol:Rol, direcciones:Direccion = None):
-        self.__id = id_usuario
+        self._id = id_usuario
         self._nombre = nombre
         self._email = email
         self._contrasena = contrasena
         self._rol = rol
         self._direcciones = direcciones if direcciones else []
 
+    @property
+    def id(self):
+        return self._id
     
     @property
     def nombre(self):
@@ -73,7 +78,7 @@ class Usuario():
 
     def __str__(self):
         # Muestra el objeto como texto
-        return f"Usuario({self.email},{self.nombre},{self.rol})"
+        return f"Usuario({self.email},{self.nombre},{self.rol},{self.direcciones})"
     
     def mostrar_menu(self):
         raise NotImplementedError("Este método debe ser implementado por cada rol.")
@@ -100,8 +105,21 @@ class Cliente(Usuario):
     def mostrar_menu(self):
         menu_cliente.menu_cliente_cli(self)
 
-    def modificar_nombre(self):
-        pass    
+    def ver_datos(self):
+        return cliente_service.ver_mis_datos(self)
+
+    def editar_nombre(self, nuevo_nombre):
+        return cliente_service.editar_nombre(self, nuevo_nombre)
+
+    def ver_mis_direcciones(self):
+        return cliente_service.ver_mis_direcciones(self)
+
+    def agregar_direccion(self):
+        return cliente_service.agregar_direccion(self)
+
+    def eliminar_direccion(self):
+        return cliente_service.eliminar_direccion(self)
+
        
 
 
@@ -118,5 +136,6 @@ class Admin(Usuario):
        nuevo_rol = cambiar_rol_usuario()
        print(nuevo_rol) 
     
-    def eliminar_usuario(self):
-        pass
+    @staticmethod
+    def eliminar_usuario():
+        eliminar_usuario_por_email()

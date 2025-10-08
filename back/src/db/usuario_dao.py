@@ -1,6 +1,5 @@
 import mysql.connector
 
-from src.utils.validation import isSuperAdmin
 from src.db.connection import get_connection
 
 ROLES = {1: "Admin", 2: "Cliente", 3: "Vendedor"}
@@ -69,7 +68,7 @@ def obtener_usuario_por_email(email: str):
         if conn and conn.is_connected():
             conn.close()
 
-
+#funciones admin
 def mostrar_usuarios():
     conn = None
     try:
@@ -96,7 +95,12 @@ def actualizar_rol(email:str, rol_id:int):
         cursor = conn.cursor()
         cursor.execute("UPDATE usuario SET rol_id = %s WHERE email = %s", (rol_id, email))
         conn.commit()
-        
+
+        if cursor.rowcount == 0:
+            print(f"No se encontró ningún usuario con el email: {email}")                        
+        else:
+            print(f"Rol actualizado correctamente para: {email}")
+
     except mysql.connector.Error as e:
         print(f"Error al modificar el rol: {e}")
     finally:
@@ -105,17 +109,6 @@ def actualizar_rol(email:str, rol_id:int):
 
 
 def eliminar_usuario(email:str):
-    email = input("Ingrese el email del usuario a eliminar: ").strip()
-
-    if isSuperAdmin(email):
-        print("No se puede eliminar al usuario raíz.")
-        return
-    
-    confirmacion = input(f"¿Está seguro que desea eliminar a {email}? (s/n): ").lower()
-    if confirmacion != "s":
-        print("Operación cancelada.")
-        return
-
     conn = None
     try:
         conn = get_connection()
@@ -134,25 +127,3 @@ def eliminar_usuario(email:str):
         if conn and conn.is_connected():
             conn.close()
 
-    
-
-def editar_nombre(usuario):
-    nombre_nuevo = input("Ingrese el nuevo nombre: ").strip()
-    conn = None
-    try:
-        conn = get_connection()
-        if not conn:
-            return
-        cursor = conn.cursor()
-        cursor.execute("UPDATE usuario SET nombre= %s WHERE email = %s", (nombre_nuevo, usuario.email))
-        conn.commit()
-        if cursor.rowcount > 0:
-            print(f"Nombre de {usuario.nombre} actualizado a {nombre_nuevo}.")
-            usuario.nombre = nombre_nuevo
-        else:
-            print("No se pudo actualizar el nombre.")
-    except mysql.connector.Error as e:
-        print(f"Error al editar el nombre: {e}")
-    finally:
-        if conn and conn.is_connected():
-            conn.close()

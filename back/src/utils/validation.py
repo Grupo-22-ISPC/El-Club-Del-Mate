@@ -4,6 +4,8 @@ import string
 
 from src.db.connection import get_connection
 
+
+
 def validar_nombre(nombre: str) -> bool:
     return len(nombre.strip()) >= 3
 

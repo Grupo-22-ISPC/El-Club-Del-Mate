@@ -3,7 +3,6 @@ class Rol:
 
     def __init__(self, nombre: str, id_rol: int = 2):
         nombre = nombre.lower()
-        print(nombre)
 
         if nombre not in self.ROLES_VALIDOS:
             raise ValueError(f"Rol inválido: nombre={nombre}")

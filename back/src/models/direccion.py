@@ -9,3 +9,10 @@ class Direccion():
         self.provincia = provincia,
         self.codigo_postal = codigo_postal,
         self.usuario_id = usuario_id
+
+
+    def __str__(self):
+        return f"""Direccion:\nCalle:{self.calle},
+                            numero:{self.numero},
+                            localidad:{self.localidad},
+                            provincia:{self.provincia}"""
