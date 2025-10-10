@@ -1,22 +1,19 @@
+from src.db import producto_dao
 from src.db import direccion_dao
 from src.db import cliente_dao
 
 
-def ver_mis_datos(cliente):
-    return {
-        "nombre": cliente.nombre,
-        "email": cliente.email,
-        "rol": cliente.rol.nombre
-    }
 
-def editar_nombre(cliente, nuevo_nombre: str):    
+def editar_nombre(cliente, nuevo_nombre: str):   
+    print(f"\nNombre actual:{cliente.nombre} ")
+    nuevo_nombre = input("Nuevo nombre: ")
     return cliente_dao.actualizar_nombre(cliente, nuevo_nombre)
 
 def ver_mis_direcciones(cliente):
     direcciones = direccion_dao.obtener_direcciones_por_usuario(cliente.id)
  
     if not direcciones:
-        return "📭 No tenés direcciones registradas."
+      return  print("📭 No tenés direcciones registradas.")
 
     resultado = "\n📌 Tus direcciones registradas:\n"
     for i, d in enumerate(direcciones, start=1):
@@ -27,9 +24,7 @@ def ver_mis_direcciones(cliente):
    🗺️ Provincia: {d['provincia']}
    📮 Código Postal: {d['codigo_postal']}
 """
-    return resultado
-
-
+    return print(resultado)
 
 def agregar_direccion(cliente):
     print("\n📬 Ingresá los datos de tu nueva dirección:")
@@ -46,17 +41,22 @@ def agregar_direccion(cliente):
         "provincia":provincia,
         "codigo_postal":codigo_postal
     }
-    # resultado = cliente.agregar_direccion(direccion)
-
-    # if resultado:
-    #     print("✅ Dirección agregada correctamente.")
-    # else:
-    #     print("❌ Hubo un problema al agregar la dirección.")
-
 
     return direccion_dao.insertar_direccion(cliente.id, direccion)
 
 def eliminar_direccion(cliente):
-    direccion_id = input("numero de la direccion a borrar: ")#
-
+    direccion_id = input("Ingrese el numero de direccion que desee borrar: ")
     return direccion_dao.eliminar_direccion(cliente.id, direccion_id)
+
+
+def realizar_pedidos(cliente):
+    pass
+
+def ver_productos_disponibles(cliente):
+    return producto_dao.obtener_todos_los_productos()
+
+
+def ver_mis_datos(cliente):
+    print(f"\nDatos Personales\nNombre: {cliente.nombre}\nEmail: {cliente.email}\nRol: {cliente.rol.nombre}")
+    cliente.ver_mis_direcciones()
+    

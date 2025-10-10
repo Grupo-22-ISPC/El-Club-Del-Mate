@@ -40,7 +40,7 @@ def obtener_usuario_por_email(email: str):
             from src.models.usuario import  Admin, Cliente, Usuario, Vendedor  
             rol = row.get("rol_id")  # asumiendo que en la tabla hay una columna 'rol'
             rol_nombre = {1: "admin", 2: "cliente", 3: "vendedor"}.get(rol, "desconocido")
-            print(row)
+            
             rol = Rol(rol_nombre)
 
             args = {

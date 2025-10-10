@@ -11,7 +11,7 @@ def menu_vendedor_cli(usuario):
 
         match opcion:
             case "1":
-                usuario.listar_producto()
+                usuario.lista_productos()
             case "2":
                 usuario.agregar_producto()
             case "3":

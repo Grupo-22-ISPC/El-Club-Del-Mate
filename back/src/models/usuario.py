@@ -2,6 +2,7 @@ import hashlib
 import re
 import string
 
+from src.services import vendedor_service
 from src.services import cliente_service
 from src.models.direccion import Direccion
 from src.models.rol import Rol
@@ -89,16 +90,17 @@ class Vendedor(Usuario):
     def mostrar_menu(self):
         menu_vendedor.menu_vendedor_cli(self)
 
-    def listar_producto():
-        pass
+    def lista_productos(self):
+        vendedor_service.lista_productos_service(self)
 
-    def agregar_producto():
-        pass
+    def agregar_producto(self):
+        vendedor_service.agregar_producto_service(self)
 
-    def editar_producto():
-        pass
-    def eliminar_producto():
-        pass
+    def editar_producto(self):
+        vendedor_service.editar_producto_service(self)
+
+    def eliminar_producto(self):
+        vendedor_service.eliminar_producto_service(self)
 
 
 class Cliente(Usuario):
@@ -111,14 +113,20 @@ class Cliente(Usuario):
     def editar_nombre(self, nuevo_nombre):
         return cliente_service.editar_nombre(self, nuevo_nombre)
 
-    def ver_mis_direcciones(self):
-        return cliente_service.ver_mis_direcciones(self)
-
     def agregar_direccion(self):
         return cliente_service.agregar_direccion(self)
 
     def eliminar_direccion(self):
         return cliente_service.eliminar_direccion(self)
+    
+    def ver_mis_pedidos(self):
+        pass
+
+    def ver_productos_disponibles(self):
+        return cliente_service.ver_productos_disponibles(self)
+    
+    def realizar_pedidos(self):
+        return cliente_service.realizar_pedidos(self)
 
        
 
@@ -133,8 +141,8 @@ class Admin(Usuario):
     
     @staticmethod
     def cambiar_rol():
-       nuevo_rol = cambiar_rol_usuario()
-       print(nuevo_rol) 
+        cambiar_rol_usuario()
+        
     
     @staticmethod
     def eliminar_usuario():

@@ -1,4 +1,3 @@
-DROP DATABASE club_del_mate;
 CREATE DATABASE if not EXISTS club_del_mate;
 use club_del_mate;
 
@@ -29,10 +28,7 @@ CREATE TABLE DIRECCION (
     FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
 );
 
-CREATE TABLE CATEGORIA (
-    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL
-);
+
 
 CREATE TABLE PRODUCTO (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,8 +36,8 @@ CREATE TABLE PRODUCTO (
     descripcion TEXT,
     precio DECIMAL(10,2) NOT NULL,
     stock INT NOT NULL,
-    id_categoria INT,
-    FOREIGN KEY (id_categoria) REFERENCES CATEGORIA(id_categoria)
+    id_usuario INT,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
 );
 
 CREATE TABLE PEDIDO (

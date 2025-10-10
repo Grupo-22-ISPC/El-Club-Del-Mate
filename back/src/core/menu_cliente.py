@@ -14,21 +14,28 @@ def menu_cliente_cli(usuario_actual):
 
         match opcion:
             case "1":
-                print(f"🧾 Nombre: {usuario_actual.nombre}")
-                print(f"📧 Email: {usuario_actual.email}")
-                print(f"🛡️ Rol: {usuario_actual.rol.nombre}")
-            case "2":
-                print(f"\nNombre actual:{usuario_actual.nombre} ")
-                nuevo_nombre = input("Nuevo nombre: ")
-                usuario_actual.editar_nombre(nuevo_nombre)
+                usuario_actual.ver_datos()                
+            case "2":        
+                usuario_actual.editar_nombre()
             case "3":
-                resul = usuario_actual.ver_mis_direcciones()
-                print(resul)
+                usuario_actual.ver_mis_direcciones()
             case "4":                
                 usuario_actual.agregar_direccion()
             case "5":
                 usuario_actual.eliminar_direccion()
             case "6":
+                usuario_actual.realizar_pedidos()
+            case "7":
+                print("🛒 Productos disponibles:")
+                productos = usuario_actual.ver_productos_disponibles()
+                hay_stock = False
+                for producto in productos:
+                    if producto.stock > 0:
+                        print(f"- {producto.nombre} - {producto.descripcion} ${producto.precio}")
+                        hay_stock = True
+                if not hay_stock:
+                    print("⚠️ No hay productos disponibles en este momento.")
+            case "8":
                 print("👋 Cerrando sesión...")
                 break
             case _:

@@ -1,9 +1,13 @@
 -- Crear (Insertar usuarios)
 INSERT INTO USUARIO (nombre, email, contrasena, rol_id) VALUES 
-('admin', 'admin@clubdelmate.com', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', 1),
-('admin', 'admin123@gmail.com','b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', 1),
-('jose', 'jose456@gmail.com','b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', 2),
+('cliente', 'cli@a.com','b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', 2),
+('vendedor', 'ven@a.com','b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', 3),
 ('maria', 'maria789@gmail.com','b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342', 2);
+
+-- crear (Insertar Productos)
+INSERT INTO producto(nombre, descripcion, precio, stock, id_usuario) VALUES
+('Algo','Algo para hacer algo',9999,1,1),
+('asdj','ñasjdjasdj',4,1,1)
 
 
 
