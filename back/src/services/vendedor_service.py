@@ -107,9 +107,6 @@ def editar_producto_service(vendedor):
         else:
             print("ℹ️ No se modificó ningún campo.")
 
-        
-         
-
 def eliminar_producto_service(vendedor):
     productos = producto_dao.lista_productos(vendedor)
     while True:

@@ -107,3 +107,17 @@ def eliminar_producto_dao(vendedor, producto):
     finally:
         if conn and conn.is_connected():
             conn.close()
+
+def descontar_stock(id_producto, cantidad):
+    conn = None
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = "UPDATE producto SET stock = stock - %s WHERE id_producto = %s AND stock >= %s"
+        cursor.execute(query, (cantidad, id_producto, cantidad))
+        conn.commit()
+    except mysql.connector.Error as e:
+        print(f"❌ Error al descontar stock: {e}")
+    finally:
+        if conn and conn.is_connected():
+            conn.close()

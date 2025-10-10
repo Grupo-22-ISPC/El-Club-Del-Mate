@@ -21,7 +21,7 @@ def obtener_direcciones_por_usuario(id):
         if conn and conn.is_connected():
             conn.close()
 
-def insertar_direccion(id,direccion):
+def agregar_direccion_dao(id,direccion):
     try:
         conn = get_connection()
         cursor = conn.cursor()
@@ -51,7 +51,7 @@ def insertar_direccion(id,direccion):
             conn.close()
 
 
-def eliminar_direccion(cliente_id, direccion_id):
+def eliminar_direccion_dao(cliente_id, direccion_id):
     conn = None
     try:
         conn = get_connection()

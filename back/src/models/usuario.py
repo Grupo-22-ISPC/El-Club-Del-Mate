@@ -108,25 +108,25 @@ class Cliente(Usuario):
         menu_cliente.menu_cliente_cli(self)
 
     def ver_datos(self):
-        return cliente_service.ver_mis_datos(self)
+        return cliente_service.ver_datos_service(self)
 
-    def editar_nombre(self, nuevo_nombre):
-        return cliente_service.editar_nombre(self, nuevo_nombre)
+    def editar_nombre(self):
+        return cliente_service.editar_nombre_service(self)
 
     def agregar_direccion(self):
-        return cliente_service.agregar_direccion(self)
+        return cliente_service.agregar_direccion_service(self)
 
     def eliminar_direccion(self):
-        return cliente_service.eliminar_direccion(self)
+        return cliente_service.eliminar_direccion_service(self)
     
-    def ver_mis_pedidos(self):
-        pass
-
     def ver_productos_disponibles(self):
-        return cliente_service.ver_productos_disponibles(self)
+        return cliente_service.productos_disponibles_service(self)
     
     def realizar_pedidos(self):
         return cliente_service.realizar_pedidos(self)
+    
+    def ver_mis_pedidos(self):
+        return cliente_service.mis_pedidos_service(self)
 
        
 

@@ -31,3 +31,42 @@ JOIN rol r ON u.rol_id = r.id_rol;
 -- -- Eliminar (Borrar un usuario)
 -- DELETE FROM usuarios
 -- WHERE id_usuario = 4;
+
+
+-- SELECT p.id_pedido, p.fecha_pedido, u.nombre
+-- FROM pedido p
+-- JOIN usuario u ON p.id_usuario = u.id_usuario;
+
+-- SELECT pr.nombre, pr.precio
+-- FROM pedido_producto pp
+-- JOIN producto pr ON pp.id_producto = pr.id_producto
+-- WHERE pp.id_pedido = 1;
+
+-- SELECT p.id_pedido, pr.nombre, p.cantidad
+-- FROM pedido p
+-- JOIN pedido_producto pp ON p.id_pedido = pp.id_pedido
+-- JOIN producto pr ON pp.id_producto = pr.id_producto
+-- WHERE p.id_usuario = 2;
+
+-- SELECT 
+--   pr.nombre,
+--   pp.cantidad,
+--   pr.precio,
+--   (pp.cantidad * pr.precio) AS total_por_producto
+-- FROM pedido_producto pp
+-- JOIN producto pr ON pp.id_producto = pr.id_producto
+-- WHERE pp.id_pedido = 1;
+
+
+-- SELECT 
+--   p.id_pedido,
+--   p.fecha_pedido,
+--   pr.nombre AS producto,
+--   pp.cantidad,
+--   pr.precio,
+--   (pp.cantidad * pr.precio) AS total_por_producto
+-- FROM pedido p
+-- JOIN pedido_producto pp ON p.id_pedido = pp.id_pedido
+-- JOIN producto pr ON pp.id_producto = pr.id_producto
+-- WHERE p.id_usuario = 2
+-- ORDER BY p.fecha_pedido DESC;
