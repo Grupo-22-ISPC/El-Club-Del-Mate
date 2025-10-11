@@ -1,6 +1,6 @@
 import hashlib
 import re
-
+import string
 
 from src.services.usuario_service import cambiar_rol_usuario, mostrar_usuarios_registrados
 from src.core import menu_cliente, menu_vendedor,menu_admin
@@ -69,8 +69,9 @@ class Usuario():
             raise ValueError("Debe contener al menos una minúscula")
         if not re.search(r"[0-9]",nueva_contrasena):
             raise ValueError("Debe contener al menos un número")
-        if not re.search(r"[!@#$%^&*(),.?\":{}|<>]",nueva_contrasena):
+        if not any(caracter in string.punctuation for caracter in nueva_contrasena):
             raise ValueError("Debe contener al menos un carácter especial")
+        
         
         self._contrasena = hashlib.sha256(nueva_contrasena.encode()).hexdigest()
 
