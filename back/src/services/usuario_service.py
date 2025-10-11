@@ -4,7 +4,7 @@ from src.utils.validation import isSuperAdmin
 ROLES_INVERSO = {"admin": 1, "cliente": 2, "vendedor": 3}
 
 
-def cambiar_rol_usuario():
+def cambiar_rol_usuario(admin):
     email = input("Ingrese el email del usuario a modificar: ").strip()
     nuevo_rol = input("Ingrese el nuevo rol (admin/usuario/vendedor): ").strip()
     
@@ -16,7 +16,7 @@ def cambiar_rol_usuario():
     
     actualizar_rol(email, rol_id)
 
-def eliminar_usuario_por_email():
+def eliminar_usuario_por_email(admin):
     email = input("Ingrese el email del usuario a eliminar: ").strip()
     confirmacion = input(f"¿Está seguro que desea eliminar a {email}? (s/n): ").lower()
 
@@ -28,7 +28,7 @@ def eliminar_usuario_por_email():
     eliminar_usuario(email)
     
 
-def mostrar_usuarios_registrados():
+def mostrar_usuarios_registrados(admin):
     ROLES = {1: "admin", 2: "cliente", 3: "vendedor"}
 
     usuarios = mostrar_usuarios()

@@ -135,15 +135,11 @@ class Admin(Usuario):
     def mostrar_menu(self):
         menu_admin.menu_admin_cli(self)
 
-    @staticmethod
-    def listar_usuarios():
-        mostrar_usuarios_registrados()
+    def listar_usuarios(self):
+        mostrar_usuarios_registrados(self)
     
-    @staticmethod
-    def cambiar_rol():
-        cambiar_rol_usuario()
+    def cambiar_rol(self):
+        cambiar_rol_usuario(self)
         
-    
-    @staticmethod
-    def eliminar_usuario():
-        eliminar_usuario_por_email()
+    def eliminar_usuario(self):
+        eliminar_usuario_por_email(self)

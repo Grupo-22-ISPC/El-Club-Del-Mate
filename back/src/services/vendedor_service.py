@@ -1,4 +1,4 @@
-from os import error
+from src.utils.validation import solicitar_float_positivo, solicitar_numero_positivo, solicitar_texto_no_vacio
 from src.db import producto_dao
 
 
@@ -22,51 +22,23 @@ def lista_productos_service(vendedor):
      
     
 def agregar_producto_service(vendedor):
-        #nombre no puede estar vacio
-        while True:
-            nombre = input("🏷️ Nombre: ").strip()
-            if nombre:
-                break
-            print("❌ El nombre no puede estar vacío. Inténtalo de nuevo.")
-
-        descripcion = input("📝 Descripción: ").strip()
-
-        #validacion para float
-        while True:
-            precio_input = input("💲  Precio: ").strip()
-            try:
-                precio = float(precio_input)
-                if precio >= 0:
-                    break
-                print("❌ El precio no puede ser negativo. Inténtalo de nuevo.")
-            except ValueError:
-                print("❌ El precio debe ser un número válido. Inténtalo de nuevo.")
-
-        #validacion stock 
-        while True:
-            stock_input = input("📦 Stock: ").strip()
-            if stock_input.isdigit():
-                stock = int(stock_input)
-                break
-            print("❌ Ingresa un número entero positivo")
+    nombre = solicitar_texto_no_vacio("🏷️ Nombre: ")
+    descripcion = input("📝 Descripción: ").strip()
+    precio = solicitar_float_positivo("💲 Precio: ")
+    stock = solicitar_numero_positivo("📦 Stock: ")
             
-        producto = {
-            "nombre": nombre,
-            "descripcion": descripcion,
-            "precio": precio,
-            "stock": stock,
-            "id_usuario": vendedor.id
-        }
-        return producto_dao.agregar_producto_dao(vendedor,producto)
+    producto = {
+        "nombre": nombre,
+        "descripcion": descripcion,
+        "precio": precio,
+        "stock": stock,
+        "id_usuario": vendedor.id
+    }
+    return producto_dao.agregar_producto_dao(vendedor,producto)
 
 def editar_producto_service(vendedor):
         productos = producto_dao.lista_productos(vendedor)
-        while True:
-            id_input = input("Ingrese el ID del producto a editar: ").strip()
-            if id_input.isdigit():
-                id = int(id_input)
-                break
-            print("❌ Ingresa un número entero positivo")
+        id = solicitar_numero_positivo("Ingrese el ID del producto a editar: ")
 
         producto = None
         for i in productos:
@@ -83,7 +55,6 @@ def editar_producto_service(vendedor):
         nueva_descripcion = input(f"Descripción actual: {producto['descripcion']} → Nueva: ").strip()
         nuevo_precio = input(f"Precio actual: {producto['precio']} → Nuevo: ").strip()
         nuevo_stock = input(f"Stock actual: {producto['stock']} → Nuevo: ").strip()
-
         
         if nuevo_nombre:
             producto["nombre"] = nuevo_nombre
@@ -101,7 +72,6 @@ def editar_producto_service(vendedor):
                 producto["stock"] = int(nuevo_stock)
 
         if producto:
-            print(vendedor,producto)
             producto_dao.editar_producto_dao(vendedor, producto)
             print("✅ Producto actualizado.")
         else:
@@ -109,12 +79,7 @@ def editar_producto_service(vendedor):
 
 def eliminar_producto_service(vendedor):
     productos = producto_dao.lista_productos(vendedor)
-    while True:
-        id_input = input("Ingrese el ID del producto a Eliminar: ").strip()
-        if id_input.isdigit():
-            id = int(id_input)
-            break
-        print("❌ Ingresa un número entero positivo")
+    id = solicitar_numero_positivo("Ingrese el ID del producto a Eliminar: ")
 
     producto = None
     for i in productos:
