@@ -1,11 +1,11 @@
-from src.utils.validation import isSuperAdmin
-from src.db.connection import get_connection
 import mysql.connector
-from src.models.usuario import Usuario
 
-ROLES = {1: "Admin", 2: "Usuario", 3: "Vendedor"}
+from src.db.connection import get_connection
 
-def crear_usuario(usuario: Usuario) -> bool:
+ROLES = {1: "Admin", 2: "Cliente", 3: "Vendedor"}
+
+def crear_usuario(usuario) -> bool:
+    conn = None
     try:
         conn = get_connection()
         if not conn:
@@ -15,7 +15,7 @@ def crear_usuario(usuario: Usuario) -> bool:
             INSERT INTO usuario (nombre, email, rol_id, contrasena) 
             VALUES (%s, %s, %s, %s)
         """
-        cursor.execute(query, (usuario.nombre, usuario.email, usuario.rol, usuario.contrasena))
+        cursor.execute(query, (usuario.nombre, usuario.email, usuario.rol.id, usuario.contrasena))
         conn.commit()
         return True  # Si todo salió bien
     except mysql.connector.Error as e:
@@ -30,14 +30,36 @@ def obtener_usuario_por_email(email: str):
     conn = None
     try:
         conn = get_connection()
-        if not conn:
-            return None
         cursor = conn.cursor(dictionary=True)
         query = "SELECT * FROM usuario WHERE email = %s"
         cursor.execute(query, (email,))
         row = cursor.fetchone()
-        if row:
-            return Usuario(**row)
+        conn.close()
+        if row:    
+            from src.models.rol import Rol
+            from src.models.usuario import  Admin, Cliente, Usuario, Vendedor  
+            rol = row.get("rol_id")  # asumiendo que en la tabla hay una columna 'rol'
+            rol_nombre = {1: "admin", 2: "cliente", 3: "vendedor"}.get(rol, "desconocido")
+            
+            rol = Rol(rol_nombre)
+
+            args = {
+                    "id_usuario": row["id_usuario"],
+                    "nombre": row["nombre"],
+                    "email": row["email"],
+                    "contrasena": row["contrasena"],
+                    "rol": rol
+            }
+
+            if rol_nombre == "admin":
+                return Admin(**args)
+            elif rol_nombre == "vendedor":
+                return Vendedor(**args)
+            elif rol_nombre == "cliente":
+                return Cliente(**args)
+            else:
+                return Usuario(**args)
+
         return None
     except mysql.connector.Error as e:
         print(f"Error al obtener usuario: {e}")
@@ -46,7 +68,7 @@ def obtener_usuario_por_email(email: str):
         if conn and conn.is_connected():
             conn.close()
 
-
+#funciones admin
 def mostrar_usuarios():
     conn = None
     try:
@@ -55,15 +77,8 @@ def mostrar_usuarios():
             return
         cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT id_usuario, nombre, email, rol_id FROM usuario")
-        usuarios = cursor.fetchall()
-
-        if not usuarios:
-            print("No hay usuarios registrados.")
-            return
-
-        print("\n Lista de usuarios:")
-        for u in usuarios:
-            print(f"ID: {u['id_usuario']} | {u['nombre']} | {u['email']} | Rol: {ROLES.get(u['rol_id'], 'Desconocido')}")
+        lista_usuarios = cursor.fetchall()
+        return lista_usuarios       
     except mysql.connector.Error as e:
         print(f"Error al mostrar usuarios: {e}")
     finally:
@@ -71,20 +86,7 @@ def mostrar_usuarios():
             conn.close()
 
 
-def modificar_rol_usuario():
-    email = input("Ingrese el email del usuario a modificar: ").strip()
-    nuevo_rol = input("Ingrese el nuevo rol (admin/usuario/vendedor): ").lower()
-    ROLES_INVERSO = {"admin": 1, "usuario": 2, "vendedor": 3}
-    rol_id = ROLES_INVERSO.get(nuevo_rol)
-
-    if not rol_id:
-        print("Rol inválido.")
-        return
-
-    if isSuperAdmin(email):
-        print("No se puede modificar al usuario raíz.")
-        return
-
+def actualizar_rol(email:str, rol_id:int):
     conn = None
     try:
         conn = get_connection()
@@ -93,10 +95,12 @@ def modificar_rol_usuario():
         cursor = conn.cursor()
         cursor.execute("UPDATE usuario SET rol_id = %s WHERE email = %s", (rol_id, email))
         conn.commit()
-        if cursor.rowcount > 0:
-            print(f"Rol de {email} actualizado a {nuevo_rol}.")
+
+        if cursor.rowcount == 0:
+            print(f"No se encontró ningún usuario con el email: {email}")                        
         else:
-            print(f"No se encontró ningún usuario con el email {email}.")
+            print(f"Rol actualizado correctamente para: {email}")
+
     except mysql.connector.Error as e:
         print(f"Error al modificar el rol: {e}")
     finally:
@@ -104,18 +108,7 @@ def modificar_rol_usuario():
             conn.close()
 
 
-def eliminar_usuario_por_email():
-    email = input("Ingrese el email del usuario a eliminar: ").strip()
-
-    if isSuperAdmin(email):
-        print("No se puede eliminar al usuario raíz.")
-        return
-    
-    confirmacion = input(f"¿Está seguro que desea eliminar a {email}? (s/n): ").lower()
-    if confirmacion != "s":
-        print("Operación cancelada.")
-        return
-
+def eliminar_usuario(email:str):
     conn = None
     try:
         conn = get_connection()
@@ -134,25 +127,3 @@ def eliminar_usuario_por_email():
         if conn and conn.is_connected():
             conn.close()
 
-
-
-def editar_nombre(usuario):
-    nombre_nuevo = input("Ingrese el nuevo nombre: ").strip()
-    conn = None
-    try:
-        conn = get_connection()
-        if not conn:
-            return
-        cursor = conn.cursor()
-        cursor.execute("UPDATE usuario SET nombre= %s WHERE email = %s", (nombre_nuevo, usuario.email))
-        conn.commit()
-        if cursor.rowcount > 0:
-            print(f"Nombre de {usuario.nombre} actualizado a {nombre_nuevo}.")
-            usuario.nombre = nombre_nuevo
-        else:
-            print("No se pudo actualizar el nombre.")
-    except mysql.connector.Error as e:
-        print(f"Error al editar el nombre: {e}")
-    finally:
-        if conn and conn.is_connected():
-            conn.close()
