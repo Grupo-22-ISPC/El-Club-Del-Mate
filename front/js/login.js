@@ -50,6 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const panelLogin = document.getElementById('panelLogin');
   const panelRegister = document.getElementById('panelRegister');
 
+  // referencias a inputs para validaciones HTML5
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const regUsernameInput = document.getElementById('regUsername');
+  const regPasswordInput = document.getElementById('regPassword');
+
+  // defensiva: salir si elementos no existen
+  if (!form || !regForm || !tabLogin || !tabRegister || !panelLogin || !panelRegister) return;
+
   function showLogin() {
     panelLogin.style.display = '';
     panelRegister.style.display = 'none';
@@ -69,53 +78,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    msg.style.display = 'none';
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value;
+    if (msg) msg.style.display = 'none';
 
-    if (!username || !password) {
-      msg.style.display = 'block';
-      msg.textContent = 'Complete usuario y contraseña.';
+    // limpiar mensajes previos
+    if (usernameInput) usernameInput.setCustomValidity('');
+    if (passwordInput) passwordInput.setCustomValidity('');
+
+    const username = usernameInput ? usernameInput.value.trim() : '';
+    const password = passwordInput ? passwordInput.value : '';
+
+    // Validación HTML5 antes de procesar
+    if ((usernameInput && !usernameInput.checkValidity()) || (passwordInput && !passwordInput.checkValidity())) {
+      if (usernameInput && !username) usernameInput.setCustomValidity('Ingrese su usuario.');
+      if (passwordInput && !password) passwordInput.setCustomValidity('Ingrese su contraseña.');
+      usernameInput && usernameInput.reportValidity();
+      passwordInput && passwordInput.reportValidity();
       return;
     }
 
     if (validateCredentials(username, password)) {
       sessionStorage.setItem('loggedUser', username);
-      window.location.href = './index.html';
+      window.location.replace('./index.html');
     } else {
-      msg.style.display = 'block';
-      msg.textContent = 'Usuario o contraseña incorrectos.';
+      if (msg) {
+        msg.style.display = 'block';
+        msg.textContent = 'Usuario o contraseña incorrectos.';
+      }
+      // opcional: marcar password como inválido para que el usuario lo note
+      if (passwordInput) {
+        passwordInput.setCustomValidity(' ');
+        passwordInput.reportValidity();
+        passwordInput.setCustomValidity('');
+      }
     }
   });
 
   regForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    regMsg.style.display = 'none';
-    const username = document.getElementById('regUsername').value.trim();
-    const password = document.getElementById('regPassword').value;
+    if (regMsg) regMsg.style.display = 'none';
 
-    if (!username || !password) {
-      regMsg.style.display = 'block';
-      regMsg.textContent = 'Complete usuario y contraseña.';
+    // limpiar previos
+    if (regUsernameInput) regUsernameInput.setCustomValidity('');
+    if (regPasswordInput) regPasswordInput.setCustomValidity('');
+
+    const username = regUsernameInput ? regUsernameInput.value.trim() : '';
+    const password = regPasswordInput ? regPasswordInput.value : '';
+
+    // Validación HTML5
+    if ((regUsernameInput && !regUsernameInput.checkValidity()) || (regPasswordInput && !regPasswordInput.checkValidity())) {
+      if (regUsernameInput && !username) regUsernameInput.setCustomValidity('Ingrese un usuario.');
+      if (regPasswordInput && !password) regPasswordInput.setCustomValidity('Ingrese una contraseña.');
+      regUsernameInput && regUsernameInput.reportValidity();
+      regPasswordInput && regPasswordInput.reportValidity();
       return;
     }
 
     if (password.length < 3) {
-      regMsg.style.display = 'block';
-      regMsg.textContent = 'La contraseña debe tener al menos 3 caracteres.';
+      if (regMsg) {
+        regMsg.style.display = 'block';
+        regMsg.textContent = 'La contraseña debe tener al menos 3 caracteres.';
+      }
+      if (regPasswordInput) {
+        regPasswordInput.setCustomValidity('La contraseña debe tener al menos 3 caracteres.');
+        regPasswordInput.reportValidity();
+      }
       return;
     }
 
     if (findUser(username)) {
-      regMsg.style.display = 'block';
-      regMsg.textContent = 'El usuario ya existe.';
+      if (regMsg) {
+        regMsg.style.display = 'block';
+        regMsg.textContent = 'El usuario ya existe.';
+      }
+      if (regUsernameInput) {
+        regUsernameInput.setCustomValidity('El usuario ya existe.');
+        regUsernameInput.reportValidity();
+      }
       return;
     }
 
     createUser(username, password);
     // Auto-login y redirigir
     sessionStorage.setItem('loggedUser', username);
-    window.location.href = './index.html';
+    window.location.replace('./index.html');
   });
 
 });
