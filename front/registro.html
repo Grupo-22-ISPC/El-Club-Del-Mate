@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-success navbar-dark p-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="./index.html">El Club del Mate</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="./index.html">Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tienda Online
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./mate.html">Mates</a></li>
+            <li><a class="dropdown-item" href="./bombilla_mate.html">Bombillas</a></li>
+            <li><a class="dropdown-item" href="./yerbas.html">Yerbas</a></li>
+            <li><a class="dropdown-item" href="./agregados.html">Agregados al Mate</a></li>
+            <li><a class="dropdown-item" href="./kits_completos_para_principiantes.html">Kits completos para principiantes</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="./tienda.html">Todos los productos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="./contacto.html">Contacto</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
+        <button class="btn btn-outline-success-bg-secondary p-3 text-white" type="button">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container flex-grow-1 d-flex justify-content-center align-items-center loginForm">
+  <div class="col-md-4">
+    <div class="text-center mb-4">
+      <h2>Registro</h2>
+      <p class="text-muted">Completa tus datos para crear una cuenta.</p>
+    </div>
+
+    <!-- 
+    - El name lo puse identico al backend.
+    - El formulario no tiene metodo post porque la idea era simular el registro de usuarios sin salir de la página
+    -->
+    <form id="registerForm">
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombre" minlength="3" maxlength="100" placeholder="Tu nombre" required>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail" name="email" minlength="3" maxlength="100" placeholder="ejemplo@correo.com" required>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-3">
+        <label for="inputPassword" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="inputPassword" name="contrasena" minlength="8" maxlength="100" placeholder="********" required>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <button type="submit" class="btn btn-success">Registrarse</button>
+        <a href="./login.html">Iniciar Sesión</a>
+      </div>
+
+      <div id="registerMessage" class="text-center mt-3"></div>
+    </form>
+  </div>
+</div>
+
+<footer class="bg-success text-white text-center py-3 mt-auto">
+  &copy; 2025 El Club del Mate. Todos los derechos reservados.
+</footer>
+
+<script>
+    function validarNombre(nombre) {
+      return nombre.trim().length >= 3;
+    }
+
+    function validarEmail(email) {
+      const re = /^[\w\.-]+@[\w\.-]+\.\w+$/;
+      return re.test(email);
+    }
+
+    function validarContrasena(password) {
+      const mayuscula = /[A-Z]/.test(password);
+      const minuscula = /[a-z]/.test(password);
+      const numero = /[0-9]/.test(password);
+      const especial = /[^A-Za-z0-9]/.test(password);
+      return password.length >= 8 && mayuscula && minuscula && numero && especial;
+    }
+
+    document.getElementById("registerForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const nombre = document.getElementById("inputNombre").value;
+      const email = document.getElementById("inputEmail").value;
+      const password = document.getElementById("inputPassword").value;
+      const mensaje = document.getElementById("registerMessage");
+
+      if(!validarNombre(nombre)){
+        mensaje.textContent = "❌ El nombre debe tener al menos 3 letras.";
+        mensaje.className = "text-danger fw-bold mt-3";
+        return;
+      }
+
+      if(!validarEmail(email)){
+        mensaje.textContent = "❌ Email inválido.";
+        mensaje.className = "text-danger fw-bold mt-3";
+        return;
+      }
+
+      if(!validarContrasena(password)){
+        mensaje.textContent = "❌ La contraseña debe tener al menos 8 caracteres, incluyendo mayúscula, minúscula, número y carácter especial.";
+        mensaje.className = "text-danger fw-bold mt-3";
+        return;
+      }
+
+      // Simulación de registro exitoso
+      mensaje.textContent = "✅ Registro válido. ¡Cuenta creada con éxito!";
+      mensaje.className = "text-success fw-bold mt-3";
+      this.reset();
+    });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
