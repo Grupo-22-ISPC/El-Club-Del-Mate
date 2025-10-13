@@ -107,3 +107,18 @@
 .product-container {
   background: #fff;
 }
+/* Responsive */
+    @media(max-width: 768px){
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .text-section {
+        margin: 0 0 20px 0;
+      }
+      }
+
+.carousel-item img {
+
+  height: 650px;
+}
