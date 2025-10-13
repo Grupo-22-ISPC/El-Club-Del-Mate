@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 DROP DATABASE club_del_mate;
+=======
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
 CREATE DATABASE if not EXISTS club_del_mate;
 use club_del_mate;
 
@@ -29,10 +32,14 @@ CREATE TABLE DIRECCION (
     FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
 );
 
+<<<<<<< HEAD
 CREATE TABLE CATEGORIA (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL
 );
+=======
+
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
 
 CREATE TABLE PRODUCTO (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,8 +47,13 @@ CREATE TABLE PRODUCTO (
     descripcion TEXT,
     precio DECIMAL(10,2) NOT NULL,
     stock INT NOT NULL,
+<<<<<<< HEAD
     id_categoria INT,
     FOREIGN KEY (id_categoria) REFERENCES CATEGORIA(id_categoria)
+=======
+    id_usuario INT,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
 );
 
 CREATE TABLE PEDIDO (
@@ -55,6 +67,10 @@ CREATE TABLE PEDIDO (
 CREATE TABLE PEDIDO_PRODUCTO (
     id_pedido INT,
     id_producto INT,
+<<<<<<< HEAD
+=======
+    cantidad INT,
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
     PRIMARY KEY (id_pedido, id_producto),
     FOREIGN KEY (id_pedido) REFERENCES PEDIDO(id_pedido),
     FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto)

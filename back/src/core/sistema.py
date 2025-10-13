@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 from src.utils.validation import hash_contrasena, validar_contrasena, validar_email, validar_nombre, verificar_contrasena
 from src.db.usuario_dao import crear_usuario, editar_nombre, eliminar_usuario_por_email, modificar_rol_usuario, mostrar_usuarios, obtener_usuario_por_email
+=======
+from src.models.rol import Rol
+from src.db.usuario_dao import crear_usuario, obtener_usuario_por_email
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
 from src.models.usuario import Usuario
 from src.utils.validation import hash_contrasena, validar_contrasena, validar_email, validar_nombre, verificar_contrasena
 
@@ -24,9 +29,16 @@ def registrar_usuario():
         print("❌ Contraseña débil.")        
         return
     
+<<<<<<< HEAD
     rol_id = 2
     contrasena = hash_contrasena(contrasena)
     usuario = Usuario(id,nombre=nombre, email=email, contrasena=contrasena, rol_id=rol_id)
+=======
+    contrasena = hash_contrasena(contrasena)
+    rol = Rol('cliente')
+
+    usuario = Usuario(id,nombre, email, contrasena, rol)
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
     crear_usuario(usuario)
     print("✅ Usuario creado con éxito.")
 
@@ -37,13 +49,18 @@ def iniciar_sesion():
     contrasena = input("Contraseña: ")
     usuario = obtener_usuario_por_email(email)
     if usuario and verificar_contrasena(contrasena, usuario.contrasena):
+<<<<<<< HEAD
         print(f"✅ Bienvenido {usuario.nombre} (Rol ID: {usuario.nombre_rol})")
+=======
+        print(f"✅ Bienvenido {usuario.nombre} (Rol ID: {usuario.rol.nombre})")
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
         return usuario
     else:
         print("❌ Usuario o contraseña incorrectos")
         return None
 
 
+<<<<<<< HEAD
 def menu_usuario(usuario_actual):
     while True:
         print(f"\n🔐 Menú Usuario - Bienvenido {usuario_actual._nombre}")
@@ -91,6 +108,8 @@ def menu_admin(usuario_actual):
                 break
             case _:
                 print("❌ Opción inválida. Intente nuevamente.")
+=======
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
 
 
 def menu_principal():

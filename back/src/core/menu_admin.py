@@ -1,7 +1,11 @@
 
 def menu_admin_cli(usuario_actual):
     while True:
+<<<<<<< HEAD
         print(f"\n🔐 Menú Administrador - Bienvenido {usuario_actual._nombre}")
+=======
+        print(f"\n🔐 Menú Administrador - Bienvenido {usuario_actual.nombre}")
+>>>>>>> e896cd1b9b7e6a074f11a9af10d82223f183ac3e
         print("1️⃣ Listar usuarios")
         print("2️⃣ Cambiar rol de un usuario")
         print("3️⃣ Eliminar usuario")
