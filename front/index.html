@@ -6,6 +6,17 @@
     <title>El Club del Mate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styles.css">
+    <script>
+      // Redirige al login si no hay usuario logueado en sessionStorage
+      try {
+        if (!sessionStorage.getItem('loggedUser')) {
+          window.location.replace('./login.html');
+        }
+      } catch (e) {
+        // en caso de error con sessionStorage, no bloquear la página
+        console.warn('sessionStorage no disponible', e);
+      }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-success navbar-dark p-3">
