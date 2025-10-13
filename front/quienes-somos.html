@@ -9,42 +9,12 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-            background-color: #f8f9f5;
-            color: #4e3b1f;
-        }
-        .bg-mate {
-            background: linear-gradient(rgba(60, 120, 60, 0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: #fff;
-        }
-        .navbar {
-            background-color: #3c5e3a;
-        }
-        .navbar-brand, .nav-link {
-            color: #fff !important;
-        }
         .section-title {
-            color: #3c5e3a;
+            color: #274226;
         }
         .card {
             border: none;
             box-shadow: 0 2px 8px rgba(60, 120, 60, 0.08);
-        }
-        .card-img-top {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            margin: 0 auto;
-        }
-        .footer {
-            background-color: #3c5e3a;
-            color: #fff;
-        }
-        .footer a {
-            color: #fff;
-            margin-right: 10px;
         }
         .curiosidades {
             background-color: #e6e2d3;
@@ -74,10 +44,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="./mate.html">Mates</a></li>
-                                <li><a class="dropdown-item" href="./bombilla_mate.html">Bombillas</a></li>
+                                <li><a class="dropdown-item" href="./bombilla-mate.html">Bombillas</a></li>
                                 <li><a class="dropdown-item" href="./yerbas.html">Yerbas</a></li>
                                 <li><a class="dropdown-item" href="./agregados.html">Agregados al Mate</a></li>
-                                <li><a class="dropdown-item" href="./kits_completos_para_principiantes.html">Kits completos para principiantes</a></li>
+                                <li><a class="dropdown-item" href="./kits-completos-para-principiantes.html">Kits completos para principiantes</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="./tienda.html">Todos los productos</a></li>
                             </ul>
@@ -99,7 +69,7 @@
 
     <!-- Sección principal con imagen de fondo -->
     <main>
-        <section class="bg-mate py-5" style="background: linear-gradient(rgba(60, 120, 60, 0.7), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; color: #fff;">
+        <section class="bg-mate py-5" style="background: linear-gradient(rgba(42, 136, 42, 0.7), rgba(255,255,255,0.7))">
             <div class="container-fluid text-center py-5">
                 <h1 class="display-4 fw-bold">Quiénes Somos</h1>
                 <p class="lead">Somos El Club del Mate, una tienda universitaria dedicada a compartir la pasión por el mate y su cultura. Descubre nuestra historia y conoce a nuestro equipo.</p>
@@ -116,7 +86,7 @@
                         <p>Desde nuestros primeros encuentros, supimos que el mate era más que una bebida: es un símbolo de amistad, comunidad y raíces. Hoy, seguimos creciendo y aprendiendo juntos.</p>
                     </div>
                     <div class="col-md-6 text-center">
-                        <img src="./img/Image 11 oct 2025, 21_18_26.png" alt="Historia del Club del Mate" class="img-fluid rounded shadow" style="width: 95%; height: 260px; object-fit: cover; display: block; margin: 0 auto;">
+                        <img src="./img/img1_carusel.png" alt="Historia del Club del Mate" class="img-fluid rounded shadow" style="width: 95%; height: 260px; object-fit: fill; display: block; margin: 0 auto;">
                     </div>
                 </div>
             </div>
@@ -127,51 +97,51 @@
             <div class="container-fluid">
                 <h2 class="section-title text-center mb-5">Nuestro Equipo</h2>
                 <div class="row justify-content-center">
-                    <!-- Gastón Alonso -->
-                    <div class="col-md-3 mb-4">
+                    <!-- Gastón -->
+                    <div class="col-md-4 mb-4">
                         <div class="card text-center h-100">
-                            <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#gastonalonso" aria-expanded="false" aria-controls="gastonalonso">
+                            <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#gaston" aria-expanded="false" aria-controls="gastonalonso">
                                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Incógnito" class="card-img-top mt-3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Gastón Alonso</h5>
+                                    <h5 class="card-title">Luis Gastón Alonso</h5>
                                     <p class="card-text">Estudiante apasionado por la tecnología y el mate. Encargado de desarrollo web.</p>
                                 </div>
                             </button>
-                            <div class="collapse" id="gastonalonso">
+                            <div class="collapse" id="gaston">
                                 <div class="card card-body bg-light">
                                     <strong>Más información:</strong> Experto en desarrollo frontend y backend, fan de la programación y el mate amargo.
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Gerardo Catalina -->
-                    <div class="col-md-3 mb-4">
+                    <!-- Gerardo -->
+                    <div class="col-md-4 mb-4">
                         <div class="card text-center h-100">
-                            <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#gerardocatalina" aria-expanded="false" aria-controls="gerardocatalina">
+                            <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#gerardo" aria-expanded="false" aria-controls="gerardocatalina">
                                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Incógnito" class="card-img-top mt-3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Gerardo Catalina</h5>
+                                    <h5 class="card-title">Luis Gerardo Catalas</h5>
                                     <p class="card-text">Creativo y curioso, siempre buscando nuevas ideas para compartir la cultura del mate.</p>
                                 </div>
                             </button>
-                            <div class="collapse" id="gerardocatalina">
+                            <div class="collapse" id="gerardo">
                                 <div class="card card-body bg-light">
                                     <strong>Más información:</strong> Apasionado por el diseño gráfico y la comunicación visual. Le encanta innovar en cada proyecto.
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Martín Villalba -->
-                    <div class="col-md-3 mb-4">
+                    <!-- Martín -->
+                    <div class="col-md-4 mb-4">
                         <div class="card text-center h-100">
-                            <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#martinvillalba" aria-expanded="false" aria-controls="martinvillalba">
+                            <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#martin" aria-expanded="false" aria-controls="martinvillalba">
                                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Incógnito" class="card-img-top mt-3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Martín Villalba</h5>
+                                    <h5 class="card-title">Martin Abel Vijarra</h5>
                                     <p class="card-text">Apasionado por la historia y las tradiciones. Responsable de contenido y comunicación.</p>
                                 </div>
                             </button>
-                            <div class="collapse" id="martinvillalba">
+                            <div class="collapse" id="martin">
                                 <div class="card card-body bg-light">
                                     <strong>Más información:</strong> Investigador de la cultura del mate y escritor de artículos para el blog del club.
                                 </div>
@@ -179,12 +149,12 @@
                         </div>
                     </div>
                     <!-- Emilce -->
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-4 mb-4">
                         <div class="card text-center h-100">
                             <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#emilce" aria-expanded="false" aria-controls="emilce">
-                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Incógnito" class="card-img-top mt-3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
+                                <img src="https://cdn-icons-png.flaticon.com/512/149/149070.png" alt="Incógnito" class="card-img-top mt-3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Emilce</h5>
+                                    <h5 class="card-title">Emilce Agustina Torres</h5>
                                     <p class="card-text">Organizadora y entusiasta, siempre lista para sumar ideas y energía al equipo.</p>
                                 </div>
                             </button>
@@ -196,12 +166,12 @@
                         </div>
                     </div>
                     <!-- Kevin -->
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-4 mb-4">
                         <div class="card text-center h-100">
                             <button class="btn p-0 border-0 w-100 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#kevin" aria-expanded="false" aria-controls="kevin">
                                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Incógnito" class="card-img-top mt-3" style="width:100px;height:100px;object-fit:cover;border-radius:50%;margin:auto;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Kevin</h5>
+                                    <h5 class="card-title">Kevin Cristofer Lorea Tannfeld</h5>
                                     <p class="card-text">Innovador y colaborador, aporta creatividad y soluciones prácticas al grupo.</p>
                                 </div>
                             </button>
