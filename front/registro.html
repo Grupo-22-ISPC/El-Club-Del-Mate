@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Registrarse</title>
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="./img/favicon.webp" type="image/webp">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -40,7 +40,7 @@
           <a class="nav-link" href="./quienes-somos.html">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="./contacto.html">Contacto</a>
+          <a class="nav-link" href="./contacto.html">Contacto</a>
         </li>
       </ul>
       <form class="d-flex" role="search" action="./buscar.html" method="GET">
@@ -60,7 +60,7 @@
       </form>
 
       <!-- Icono de usuario (Login) -->
-      <a href="./login.html" class="btn btn-light d-flex align-items-center ms-3 py-1 px-2 small">
+      <a href="./login.html" class="btn btn-light d-flex align-items-center ms-3 py-1 px-2 small active">
         <i class="bi bi-person-circle fs-6 me-1"></i> Iniciar Sesión
       </a>
     </div>
@@ -68,69 +68,101 @@
 </nav>
 
 
-<div class="container d-flex justify-content-center align-items-center min-vh-50 contactForm">
-  <div class="col-md-6">
-    <!-- Título y texto centrados -->
+<div class="container flex-grow-1 d-flex justify-content-center align-items-center loginForm">
+  <div class="col-md-4">
     <div class="text-center mb-4">
-      <h2>¡Contáctanos!</h2>
-      <p class="text-muted">
-        Nos encantaría saber de ti. <br>
-        Completa el formulario y te responderemos lo antes posible.<br>
-        Tu opinión y consultas son muy importantes para nosotros. 😊
-      </p>
+      <h2>Registro</h2>
+      <p class="text-muted">Completa tus datos para crear una cuenta.</p>
     </div>
 
-    <!-- Formulario -->
-    <form id="contactForm" class="row g-3 shadow p-4 rounded bg-light" action="https://formsubmit.co/gerardocatalas@yahoo.com" method="POST">
-
-      
-      <!-- Nombre y Apellido en la misma fila -->
-      <div class="col-md-6">
+    <!-- 
+    - El name lo puse identico al backend.
+    - El formulario no tiene metodo post porque la idea era simular el registro de usuarios sin salir de la página
+    -->
+    <form id="registerForm">
+      <!-- Nombre -->
+      <div class="mb-3">
         <label for="inputNombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="inputNombre" name="nombre" maxlength="200" placeholder="Tu nombre" required>
-      </div>
-      <div class="col-md-6">
-        <label for="inputApellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="inputApellido" name="apellido" maxlength="200" placeholder="Tu apellido" required>
+        <input type="text" class="form-control" id="inputNombre" name="nombre" minlength="3" maxlength="100" placeholder="Tu nombre" required>
       </div>
 
       <!-- Email -->
-      <div class="col-12">
+      <div class="mb-3">
         <label for="inputEmail" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail" name="email" maxlength="200" placeholder="ejemplo@correo.com" required>
+        <input type="email" class="form-control" id="inputEmail" name="email" minlength="3" maxlength="100" placeholder="ejemplo@correo.com" required>
       </div>
 
-      <!-- Asunto -->
-      <div class="col-12">
-        <label for="inputAsunto" class="form-label">Asunto</label>
-        <input type="text" class="form-control" id="inputAsunto" name="asunto" maxlength="200" placeholder="Escribe el asunto" required>
+      <!-- Contraseña -->
+      <div class="mb-3">
+        <label for="inputPassword" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="inputPassword" name="contrasena" minlength="8" maxlength="100" placeholder="********" required>
       </div>
 
-      <!-- Mensaje -->
-      <div class="col-12">
-        <label for="inputMensaje" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="inputMensaje" rows="5" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <button type="submit" class="btn btn-success">Registrarse</button>
+        <a href="./login.html">Iniciar Sesión</a>
       </div>
 
-      <!-- Campos Ocultos de Formsubmit -->
-      <input type="hidden" name="_subject" value="Nuevo mensaje desde El Club del Mate">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="./gracias.html">
-
-      <!-- Botón -->
-      <div class="col-12">
-        <button type="submit" class="btn btn-success w-100">Enviar</button>
-      </div>
-
+      <div id="registerMessage" class="text-center mt-3"></div>
     </form>
   </div>
 </div>
 
+<footer class="bg-success text-white text-center py-3 mt-auto">
+  &copy; 2025 El Club del Mate. Todos los derechos reservados.
+</footer>
 
-  <!-- Footer -->
-  <footer class="bg-success text-white text-center py-3 mt-5">
-    &copy; 2025 El Club del Mate. Todos los derechos reservados.
-  </footer>
+<script>
+    function validarNombre(nombre) {
+      return nombre.trim().length >= 3;
+    }
+
+    function validarEmail(email) {
+      const re = /^[\w\.-]+@[\w\.-]+\.\w+$/;
+      return re.test(email);
+    }
+
+    function validarContrasena(password) {
+      const mayuscula = /[A-Z]/.test(password);
+      const minuscula = /[a-z]/.test(password);
+      const numero = /[0-9]/.test(password);
+      const especial = /[^A-Za-z0-9]/.test(password);
+      return password.length >= 8 && mayuscula && minuscula && numero && especial;
+    }
+
+    document.getElementById("registerForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const nombre = document.getElementById("inputNombre").value;
+      const email = document.getElementById("inputEmail").value;
+      const password = document.getElementById("inputPassword").value;
+      const mensaje = document.getElementById("registerMessage");
+
+      if(!validarNombre(nombre)){
+        mensaje.textContent = "❌ El nombre debe tener al menos 3 letras.";
+        mensaje.className = "text-danger fw-bold mt-3";
+        return;
+      }
+
+      if(!validarEmail(email)){
+        mensaje.textContent = "❌ Email inválido.";
+        mensaje.className = "text-danger fw-bold mt-3";
+        return;
+      }
+
+      if(!validarContrasena(password)){
+        mensaje.textContent = "❌ La contraseña debe tener al menos 8 caracteres, incluyendo mayúscula, minúscula, número y carácter especial.";
+        mensaje.className = "text-danger fw-bold mt-3";
+        return;
+      }
+
+      // Simulación de registro exitoso
+      mensaje.textContent = "✅ Registro válido. ¡Cuenta creada con éxito!";
+      mensaje.className = "text-success fw-bold mt-3";
+      this.reset();
+    });
+</script>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

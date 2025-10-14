@@ -4,6 +4,8 @@ import string
 
 from src.db.connection import get_connection
 
+
+
 def validar_nombre(nombre: str) -> bool:
     return len(nombre.strip()) >= 3
 
@@ -35,3 +37,31 @@ def hash_contrasena(contrasena):
 def verificar_contrasena(contrasena_ingresada, hash_guardado):
     return hash_contrasena(contrasena_ingresada) == hash_guardado
 
+def solicitar_numero_positivo(mensaje: str) -> int:
+    while True:
+        valor = input(mensaje).strip()
+        if valor.isdigit():
+            return int(valor)
+        print("❌ Ingresa un número entero positivo")
+
+def solicitar_float_positivo(mensaje: str) -> float:
+    while True:
+        valor = input(mensaje).strip()
+        try:
+            numero = float(valor)
+            if numero >= 0:
+                return numero
+            print("❌ El valor no puede ser negativo.")
+        except ValueError:
+            print("❌ Debe ser un número válido.")
+
+def solicitar_texto_no_vacio(mensaje: str) -> str:
+    while True:
+        texto = input(mensaje).strip()
+        if texto:
+            return texto
+        print("❌ Este campo no puede estar vacío.")
+
+def solicitar_confirmacion(mensaje: str) -> bool:
+    respuesta = input(f"{mensaje} (s/n): ").lower().strip()
+    return respuesta == 's'

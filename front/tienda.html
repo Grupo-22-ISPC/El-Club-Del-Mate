@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda</title>
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./img/favicon.webp" type="image/webp">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
@@ -24,22 +28,41 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="./mate.html">Mates</a></li>
-            <li><a class="dropdown-item" href="./bombilla_mate.html">Bombillas</a></li>
+            <li><a class="dropdown-item" href="./bombilla-mate.html">Bombillas</a></li>
             <li><a class="dropdown-item" href="./yerbas.html">Yerbas</a></li>
             <li><a class="dropdown-item" href="./agregados.html">Agregados al Mate</a></li>
-            <li><a class="dropdown-item" href="./kits_completos_para_principiantes.html">Kits completos para principiantes</a></li>
+            <li><a class="dropdown-item" href="./kits-completos-para-principiantes.html">Kits completos para principiantes</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="./tienda.html">Todos los productos</a></li>
           </ul>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./quienes-somos.html">Quiénes Somos</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./contacto.html">Contacto</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
-        <button class="btn btn-outline-success-bg-secondary p-3 text-white" type="button">Buscar</button>
+      <form class="d-flex" role="search" action="./buscar.html" method="GET">
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0">
+            <i class="bi bi-search"></i>
+          </span>
+          <input 
+            type="search" 
+            name="q" 
+            class="form-control border-start-0" 
+            placeholder="Buscar..." 
+            aria-label="Buscar" 
+            required
+          >
+        </div>
       </form>
+
+      <!-- Icono de usuario (Login) -->
+      <a href="./login.html" class="btn btn-light d-flex align-items-center ms-3 py-1 px-2 small">
+        <i class="bi bi-person-circle fs-6 me-1"></i> Iniciar Sesión
+      </a>
     </div>
   </div>
 </nav>
@@ -49,7 +72,7 @@
   <!-- Card 1 -->
   <div class="col">
     <div class="card h-100">
-      <a href="./producto.html" class="text-decoration-none text-dark">
+      <a href="./producto-jengibre-deshidratado.html" class="text-decoration-none text-dark">
         <img src="./img/agregados/Jengibre.webp" class="card-img-top" alt="Jengibre Deshidratado">
         <div class="card-body">
           <h5 class="card-title">Jengibre Deshidratado (100gr)</h5>
@@ -72,7 +95,7 @@
   <!-- Card 2 -->
   <div class="col">
     <div class="card h-100">
-      <a href="./producto.html" class="text-decoration-none text-dark">
+      <a href="./producto-bombilla.html" class="text-decoration-none text-dark">
         <img src="./img/bombilla/bombilla5.jpeg" class="card-img-top" alt="Bombilla con Filtro Cuchara Larga">
         <div class="card-body">
           <h5 class="card-title">Bombilla con Filtro Cuchara Larga</h5>
@@ -95,7 +118,7 @@
   <!-- Card 3 -->
   <div class="col">
     <div class="card h-100">
-      <a href="./producto.html" class="text-decoration-none text-dark">
+      <a href="./producto-kit.html" class="text-decoration-none text-dark">
         <img src="./img/kits completos de mate/kits completos de mate9.jpeg" class="card-img-top" alt="Kit Matero Verde Militar Premium">
         <div class="card-body">
           <h5 class="card-title">Kit Matero Verde Militar Premium</h5>
@@ -118,10 +141,10 @@
   <!-- Card 4 -->
   <div class="col">
     <div class="card h-100">
-      <a href="./producto.html" class="text-decoration-none text-dark">
+      <a href="./producto-yerba.html" class="text-decoration-none text-dark">
         <img src="./img/yerba/yerba10.jpeg" class="card-img-top" alt="Yerba Jesper a Granel">
         <div class="card-body">
-          <h5 class="card-title">Yerba Jesper a Granel</h5>
+          <h5 class="card-title">Yerba Jesper a Granel (bolsa 10kg)</h5>
           <p class="card-text">
             Yerba mate en presentación de bolsa grande para consumo masivo. Sabor intenso, ideal para bares o familias numerosas.
           </p>
@@ -129,7 +152,7 @@
       </a>
       <div class="card-footer d-flex">
         <div class="w-50 d-flex justify-content-center align-items-center">
-          <strong>$22.000 (bolsa 10kg)</strong>
+          <strong>$22.000</strong>
         </div>
         <div class="w-50 d-flex justify-content-center align-items-center">
           <a class="btn btn-success" href="#" role="button">Comprar</a>
@@ -141,12 +164,12 @@
   <!-- Card 5 -->
   <div class="col">
     <div class="card h-100">
-      <a href="./producto.html" class="text-decoration-none text-dark">
-        <img src="./img/mate/mate10.png" class="card-img-top" alt="Mate de cerámica blanco">
+      <a href="./producto-mate.html" class="text-decoration-none text-dark">
+        <img src="./img/mate/mate7.jpeg" class="card-img-top" alt="Mate de madera">
         <div class="card-body">
-          <h5 class="card-title">Mate de cerámica blanco</h5>
+          <h5 class="card-title">Mate de madera con virola grabada</h5>
           <p class="card-text">
-            Mate de cerámica esmaltada de forma redonda.
+            Mate de madera pulida con virola de alpaca grabada con diseños geométricos.
           </p>
         </div>
       </a>
@@ -170,6 +193,5 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </body>
 </html>
