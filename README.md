@@ -44,20 +44,64 @@ Este proyecto está desarrollado en Python y utiliza MySQL como base de datos. A
 - MySQL Server (ej. XAMPP o MySQL Workbench)
 - Git
 
-### 📦 Dependencias
+### 📋 Pasos de Instalación
 
-Instalación de paquetes necesarios:
+1.  **Clona el repositorio:**
+    ```bash
+    git clone https://URL_DE_TU_REPOSITORIO.git
+    cd EL-CLUB-DEL-MATE
+    ```
 
-```bash
-pip install mysql-connector-python python-dotenv
-```
-### 🔐 Configuración del archivo `.env`
+2.  **Crea y activa un entorno virtual (muy recomendado):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # En Windows: venv\Scripts\activate
+    ```
 
-Este proyecto utiliza variables de entorno para manejar credenciales y configuraciones sensibles. Asegurate de crear un archivo `.env` en la raíz del proyecto con el siguiente formato:
+3.  **Instala las dependencias:**
+    Este comando utiliza el archivo `requirements.txt` para instalar todas las librerías de Python necesarias con sus versiones exactas (proceso conocido como "unfreezing").
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_clave_aqui
-DB_NAME=club_del_mate
-```
+4.  **Configura las variables de entorno:**
+    Crea un archivo llamado `.env` en la raíz del proyecto. Puedes copiar el contenido de `.env.example` y rellenarlo con tus credenciales locales:
+    ```env
+    DB_HOST=localhost
+    DB_PORT=tu_puerto
+    DB_USER=root
+    DB_PASSWORD=tu_clave_aqui
+    DB_NAME=club_del_mate
+
+    ```
+
+5.  **Prepara la Base de Datos:**
+    1.  **Asegúrate de que tu servidor de MySQL esté corriendo.**
+
+    2.  **Crea la base de datos** con el nombre que especificaste en tu archivo `.env` (ej: `club_del_mate`).
+
+    3.  **Ejecuta los scripts en el siguiente orden** para crear la estructura y cargar los datos:
+    * **Primero, las tablas:** `back/scripts/creacion_db.sql`
+    * **Segundo, los datos iniciales:** `back/scripts/club_del_mate_datos_iniciales.sql`
+    * **Tercero, las vistas:** `back/scripts/club_del_mate_vistas.sql`
+
+### ▶️ Ejecución del Proyecto
+
+Para correr el proyecto, necesitas iniciar el backend y el frontend por separado.
+
+1.  **Para iniciar el Backend (Servidor de Python):**
+    En tu terminal, desde la raíz del proyecto, ejecuta:
+    ```bash
+    python back/app.py
+    ```
+    El servidor estará corriendo, listo para recibir peticiones.
+
+2.  **Para iniciar el Frontend (Sitio Web):**
+    La forma más sencilla es abrir el archivo `front/index.html` directamente en tu navegador web.
+
+
+
+
+
+
+
