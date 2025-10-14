@@ -96,8 +96,8 @@ def realizar_pedidos(cliente):
         print("ℹ️ No se seleccionaron productos.")
         return
     
-    cantidad_total = sum(item['cantidad'] for item in carrito)
-    id_pedido = pedido_dao.crear_pedido(cliente, cantidad_total)
+    sum(item['cantidad'] for item in carrito)
+    id_pedido = pedido_dao.crear_pedido(cliente)
     if not id_pedido:
         print("❌ No se pudo crear el pedido.")
         return
