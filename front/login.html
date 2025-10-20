@@ -107,31 +107,7 @@
   &copy; 2025 El Club del Mate. Todos los derechos reservados.
 </footer>
 
-<script>
-  // Usuario definido para pruebas
-  const usuarioDefinido = {
-    email: "usuario@correo.com",
-    password: "123456"
-  };
-
-  document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const email = document.getElementById("inputEmail").value;
-    const password = document.getElementById("inputPassword").value;
-    const mensaje = document.getElementById("loginMessage");
-
-    if(email === usuarioDefinido.email && password === usuarioDefinido.password){
-      mensaje.textContent = "✅ Acceso correcto. ¡Bienvenido!";
-      mensaje.className = "text-success fw-bold mt-3";
-    } else {
-      mensaje.textContent = "❌ Acceso incorrecto. Verifica tu correo o contraseña.";
-      mensaje.className = "text-danger fw-bold mt-3";
-    }
-  });
-</script>
-
-
+<script src="./js/login.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
